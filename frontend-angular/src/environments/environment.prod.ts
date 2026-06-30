@@ -1,6 +1,5 @@
 export const environment = {
   production: true,
-  // Aquí pondremos los links reales cuando subamos los servidores
-  apiUrlNode: 'https://tu-app-backend.onrender.com', 
-  apiUrlPython: 'https://tu-espacio-ia.hf.space/api'   
+  apiUrlNode: 'https://emma-backend-node.onrender.com', 
+  apiUrlPython: 'https://eldonchambas-emma-voz-backend.hf.space/api'   
 };
