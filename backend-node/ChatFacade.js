@@ -5,9 +5,20 @@ const path = require('path');
 const SearchEngine = require('./busqueda');
 const EventEmitter = require('events');
 const chatEmitter = new EventEmitter();
-const memoria = require('./memoriaSesion');
 const acciones = require('./acciones');
 const nucleo = require('./nucleoInmutable');
+const MemoriaSesion = require('./memoriaSesion');
+const sesiones = new Map();
+
+function obtenerSesion(sessionId) {
+    if (!sesiones.has(sessionId)) {
+        sesiones.set(sessionId, {
+            estado: nucleo.crearEstadoInicial(),
+            memoria: new MemoriaSesion() // Instancia única e independiente para su historial
+        });
+    }
+    return sesiones.get(sessionId);
+}
 
 chatEmitter.on('STORE_SWITCH', (data) => {
     console.log(`Log: El usuario entró a la tienda: ${data.tienda}`);
@@ -16,16 +27,19 @@ chatEmitter.on('STORE_SWITCH', (data) => {
 // --- NUEVO: ESTADO INMUTABLE CENTRALIZADO ---
 // Reemplazamos el antiguo contextoConversacion. 
 // El Núcleo es el único que define cómo nace este estado.
-let estadoUsuario = nucleo.crearEstadoInicial();
 
 class ChatFacade {
-
     static findParentNode(allNodes, childId) {
         return allNodes.find(n => n.aristas && n.aristas.includes(childId));
     }
 
-    static async getResponse(message) {
-        
+    // 🔥 NUEVO: Recibe el sessionId como primer parámetro
+    static async getResponse(sessionId, message) {
+        // 1. Extraemos los datos exclusivos de este usuario
+        const sesionActual = obtenerSesion(sessionId);
+        let estadoUsuario = sesionActual.estado;
+        let memoriaUsuario = sesionActual.memoria;
+
         const tiendasDir = path.join(__dirname, 'tiendas');
         let tiendas = [];
         
@@ -69,8 +83,8 @@ class ChatFacade {
                 chatEmitter.emit('STORE_SWITCH', { tienda: tiendaSolicitada.nombre });
                 
                 // Limpiamos memorias antiguas
-                memoria.limpiarMemoria();
-                memoria.registrarEpisodio('VISITA_TIENDA', tiendaSolicitada.nombre);
+                memoriaUsuario.limpiarMemoria();
+                memoriaUsuario.registrarEpisodio('VISITA_TIENDA', tiendaSolicitada.nombre);
                 
                 const nuevaRaiz = tiendaSolicitada.nodos.find(n => n.tipo === 'raiz');
                 
@@ -79,7 +93,8 @@ class ChatFacade {
                     tipo: 'CAMBIAR_TIENDA',
                     payload: { tiendaId: tiendaSolicitada.id, nodoRaizId: nuevaRaiz.id }
                 });
-                
+                sesionActual.estado = estadoUsuario;
+
                 return {
                     id: nuevaRaiz.id,
                     respuesta: `(Entrando a ${tiendaSolicitada.nombre}) ... ${nuevaRaiz.respuesta}`,
@@ -111,6 +126,7 @@ class ChatFacade {
                 tipo: 'CAMBIAR_TIENDA',
                 payload: { tiendaId: null, nodoRaizId: null }
             });
+            sesionActual.estado = estadoUsuario;
 
             return {
                 id: 'lobby',
@@ -130,8 +146,8 @@ class ChatFacade {
                 tipo: 'CAMBIAR_NODO',
                 payload: { nodoId: nodoRaiz.id }
             });
-            
-            memoria.limpiarMemoria();
+            sesionActual.estado = estadoUsuario;
+            memoriaUsuario.limpiarMemoria();
             return {
                 id: nodoRaiz.id,
                 respuesta: nodoRaiz.respuesta,
@@ -145,7 +161,7 @@ class ChatFacade {
         if (comandosHistorial.some(cmd => new RegExp(`\\b${cmd}\\b`, 'i').test(userMessage))) {
             return {
                 id: 'historial',
-                respuesta: memoria.obtenerResumenEpisodico(),
+                respuesta: memoriaUsuario.obtenerResumenEpisodico(),
                 tipo: 'info'
             };
         }
@@ -169,6 +185,8 @@ class ChatFacade {
             // --- NUEVO: CAMBIO DE ESTADO (Aplicamos el vaciado) ---
             estadoUsuario = nucleo.procesarAccion(estadoUsuario, resultado.accionEstado);
             
+            sesionActual.estado = estadoUsuario;
+
             return {
                 id: 'vaciar_carrito',
                 respuesta: resultado.texto,
@@ -199,7 +217,7 @@ class ChatFacade {
         let queryEnriquecida = message;
 
         if (mensajeLimpio.length > 0) {
-            const contextoPrevio = memoria.obtenerContextoReciente();
+            const contextoPrevio = memoriaUsuario.obtenerContextoReciente();
             queryEnriquecida = contextoPrevio ? `${contextoPrevio} ${message}` : message;
         } else {
             chatEmitter.emit('FAILED_MATCH', { input: message });
@@ -221,10 +239,10 @@ class ChatFacade {
         // 4. RESPUESTA Y PERSISTENCIA DE ESTADO
         if (nodoGanador) {
             chatEmitter.emit('SUCCESSFUL_MATCH', { nodo: nodoGanador.id });
-            memoria.agregarMensaje(message);
+            memoriaUsuario.agregarMensaje(message);
 
             if (nodoGanador.tipo !== 'raiz') {
-                memoria.registrarEpisodio('CONSULTA_PRODUCTO', nodoGanador.nombre);
+                memoriaUsuario.registrarEpisodio('CONSULTA_PRODUCTO', nodoGanador.nombre);
             }
             
             let respuestaFinal = nodoGanador.respuesta;
@@ -251,17 +269,20 @@ class ChatFacade {
                 payload: { nodoId: nodoGanador.id }
             });
 
+            sesionActual.estado = estadoUsuario;
+            sesiones.set(sessionId, sesionActual);
+
             return {
                 id: nodoGanador.id,
                 respuesta: respuestaFinal,
                 tipo: 'info',
                 carritoActualizado: acciones.obtenerEstadoCarrito(estadoUsuario)
-            }; 
+            };
         } else {
-            chatEmitter.emit('FAILED_MATCH', { input: message });
+            // Para el bloque del error, no hubo cambio de estado, pero es buena práctica devolverlo igual
             return {
                 id: 'error',
-                respuesta: `No encontré eso en ${tienda.nombre}. ${nodoActual.pregunta || nodoActual.respuesta}`,
+                respuesta: `No encontré eso.`,
                 tipo: 'error'
             };
         }

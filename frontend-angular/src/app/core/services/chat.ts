@@ -30,15 +30,30 @@ export class ChatService {
   private readonly apiUrl: string = `${environment.apiUrlNode}/chat`;
   private readonly API_KEY: string = 'chatbot-key';
   
+  // 🔥 NUEVO: Generamos o recuperamos un ID único por usuario
+  private readonly sessionId: string = this.getOrCreateSessionId();
+
   private localContext: LocalContext = { tiendaId: null };
+
+  // 🔥 NUEVO: Método para asegurar que el ID persista si recargan la página
+  private getOrCreateSessionId(): string {
+    let id = localStorage.getItem('emma_session_id');
+    if (!id) {
+      id = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2, 15);
+      localStorage.setItem('emma_session_id', id);
+    }
+    return id;
+  }
 
   async enviarMensajeOnline(mensaje: string): Promise<any> {
     if (!this.circuitBreaker.canExecute()) {
       throw new Error('Circuito Abierto');
     }
 
+    // 🔥 NUEVO: Agregamos el Session ID a las cabeceras
     const headers: HttpHeaders = new HttpHeaders({
-      'x-api-key': this.API_KEY
+      'x-api-key': this.API_KEY,
+      'x-session-id': this.sessionId 
     });
 
     try {

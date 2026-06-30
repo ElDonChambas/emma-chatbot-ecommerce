@@ -1,37 +1,37 @@
-<div class="bg-background-light font-body min-h-screen flex items-center justify-center p-4">
-  <div class="relative w-full max-w-[400px] h-[750px] bg-card-light rounded-3xl shadow-xl flex flex-col overflow-hidden">
+<div class="bg-background-light font-body h-[100dvh] sm:min-h-screen flex items-center justify-center p-0 sm:p-4">
+  <div class="relative w-full h-full sm:max-w-[400px] sm:h-[750px] bg-card-light sm:rounded-3xl sm:shadow-xl flex flex-col overflow-hidden">
     
-    <div class="bg-gradient-to-r from-blue-600 to-blue-400 p-6 text-white flex justify-between items-start z-20">
+    <div class="bg-gradient-to-r from-blue-600 to-blue-400 p-4 sm:p-6 text-white flex justify-between items-center z-20 gap-2 sm:gap-4">
 
-        <div class="rounded-full bg-white border-2 border-white w-15 h-15 flex items-center justify-center shadow-md overflow-hidden">
-          <img src="emma-avatar.png" alt="Emma Chatbot Avatar" class="h-14 w-auto"/>
-        </div>
-      <div>
-        <p class="text-xs opacity-90 tracking-wide uppercase">Chatbot</p>
-        <div class="flex items-baseline gap-2 mb-1">
-          <h2 class="text-2xl font-bold tracking-tight">Emma</h2>
-          <!-- Marca de agua en UI -->
-          <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/30 text-white/90 whitespace-nowrap">
+      <div class="shrink-0 rounded-full bg-white border-2 border-white w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center shadow-md overflow-hidden">
+        <img src="emma-avatar.png" alt="Emma Chatbot Avatar" class="w-full h-full object-cover"/>
+      </div>
+
+      <div class="flex-1 min-w-0">
+        <p class="text-[10px] sm:text-xs opacity-90 tracking-wide uppercase hidden sm:block">Chatbot</p>
+        <div class="flex items-baseline gap-1.5 sm:gap-2 mb-1">
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Emma</h2>
+          <span class="text-[9px] sm:text-[10px] bg-white/20 px-1.5 sm:px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/30 text-white/90 whitespace-nowrap">
             by Rodrigo Ávila
           </span>
         </div>
         
-        <select [(ngModel)]="vozSeleccionada" class="mt-1 text-xs bg-white/20 border border-white/30 rounded-lg p-1 text-white outline-none cursor-pointer focus:bg-blue-600">
+        <select [(ngModel)]="vozSeleccionada" class="text-[10px] sm:text-xs bg-white/20 border border-white/30 rounded-lg p-1 text-white outline-none cursor-pointer focus:bg-blue-600 max-w-[130px] sm:max-w-full truncate">
           @for (voz of vocesDisponibles; track voz.id) {
             <option [value]="voz.id" class="text-gray-800">{{ voz.nombre }}</option>
           }
         </select>
       </div>
 
-      <div class="flex items-center space-x-2">
-        <button (click)="mostrarInfo = true" class="relative p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center" title="Información del Proyecto">
-          <span class="material-icons text-xl">info</span>
+      <div class="shrink-0 flex items-center space-x-1 sm:space-x-2">
+        <button (click)="mostrarInfo = true" class="relative p-1.5 sm:p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center" title="Información del Proyecto">
+          <span class="material-icons text-base sm:text-xl">info</span>
         </button>
 
-        <button (click)="mostrarCarrito = !mostrarCarrito" class="relative p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center">
-          <span class="text-xl">🛒</span>
+        <button (click)="mostrarCarrito = !mostrarCarrito" class="relative p-1.5 sm:p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center">
+          <span class="text-base sm:text-xl">🛒</span>
           @if (carritoItems.length > 0) {
-            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-md">
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] sm:text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center shadow-md">
               {{ carritoItems.length }}
             </span>
           }

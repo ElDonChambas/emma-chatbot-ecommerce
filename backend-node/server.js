@@ -16,13 +16,16 @@ const server = http.createServer(app);
 socketModule.init(server);
 
 app.post('/chat', gatekeeper, async (req, res) => {
+    // 🔥 NUEVO: Extraemos el identificador único del usuario desde las cabeceras
+    const sessionId = req.headers['x-session-id'] || 'usuario_anonimo';
     const userMessage = req.body.message;
-    // ChatFacade ahora debería devolver el objeto del nodo completo, no solo el string
-    const nodoGanador = await ChatFacade.getResponse(userMessage); 
+    
+    // 🔥 NUEVO: Le pasamos el sessionId a la fachada como primer parámetro
+    const nodoGanador = await ChatFacade.getResponse(sessionId, userMessage); 
 
     res.json({ 
-        response: nodoGanador.respuesta, // El texto para el chat
-        metadata: {                      // Información oculta para el botón
+        response: nodoGanador.respuesta, 
+        metadata: {                      
             id: nodoGanador.id,
             precio: nodoGanador.precio || 0,
             nombre: nodoGanador.nombre,

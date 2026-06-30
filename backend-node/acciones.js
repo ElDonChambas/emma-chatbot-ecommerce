@@ -10,7 +10,7 @@ const acciones = {
         
         return {
             // El texto que dirá el bot
-            texto: `\n🛒 *[Sistema: Se agregó ${producto} al carrito. Total a pagar: $${nuevoTotal.toFixed(2)}]*`,
+            texto: `\n🛒 Se agregó ${producto} al carrito. Total a pagar: $${nuevoTotal.toFixed(2)}]`,
             // La "solicitud" oficial para el Núcleo
             accionEstado: {
                 tipo: 'AGREGAR_CARRITO',

@@ -55,4 +55,4 @@ class MemoriaSesion {
 }
 
 // Exportamos una instancia única para que la RAM conserve el estado durante la sesión
-module.exports = new MemoriaSesion();
+module.exports = MemoriaSesion;
