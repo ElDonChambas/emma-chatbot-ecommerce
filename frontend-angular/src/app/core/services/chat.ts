@@ -4,6 +4,8 @@ import { firstValueFrom } from 'rxjs';
 import { TIENDAS_LOCALES } from '../../data/tiendas_local'; 
 import { CircuitBreakerService } from './circuit-breaker';
 import { SearchService } from './search';
+import { environment } from '../../../environments/environment';
+
 
 /**
  * Contrato estructural para la respuesta del motor offline.
@@ -25,7 +27,7 @@ export class ChatService {
   private readonly circuitBreaker: CircuitBreakerService = inject(CircuitBreakerService);
   private readonly searchEngine: SearchService = inject(SearchService);
 
-  private readonly apiUrl: string = 'http://localhost:3000/chat';
+  private readonly apiUrl: string = `${environment.apiUrlNode}/chat`;
   private readonly API_KEY: string = 'chatbot-key';
   
   private localContext: LocalContext = { tiendaId: null };

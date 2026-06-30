@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../environments/environment'; 
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class Websocket {
 
   constructor() {
     // Conectamos al mismo puerto donde está corriendo tu server.js de Node
-    this.socket = io('http://localhost:3000'); 
+    this.socket = io(environment.apiUrlNode);
   }
 
   // Método genérico para enviar (emitir) datos

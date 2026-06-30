@@ -123,7 +123,7 @@ export class Chat implements OnInit, OnDestroy {
           formData.append('audio', audioBlob, 'grabacion.webm');
 
           // Petición al nuevo microservicio de FastAPI
-          const respuesta = await fetch('`${environment.apiUrlPython}/transcribir', {
+          const respuesta = await fetch(`${environment.apiUrlPython}/transcribir`, {
             method: 'POST',
             body: formData
           });
@@ -319,7 +319,7 @@ public async enviarMensaje(): Promise<void> {
   this.cdr.detectChanges();
 
   try {
-    const respuesta = await fetch('http://localhost:8000/api/hablar', {
+    const respuesta = await fetch(`${environment.apiUrlPython}/hablar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
