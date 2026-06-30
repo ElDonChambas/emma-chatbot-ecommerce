@@ -22,7 +22,7 @@
               "onnxruntime-web"
             ],
             "externalDependencies": [
-              "fs", "path", "os", "child_process", "util", "stream", "events", "onnxruntime-node", "sharp"
+              "fs", "path", "os", "child_process", "util", "stream", "stream/web", "events", "onnxruntime-node", "sharp"
             ],
             "assets": [
               {
