@@ -1,0 +1,13 @@
+# Bloquear dependencias
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Bloquear archivos basura de Python
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/env/
+
+# Bloquear variables de entorno
+**/.env

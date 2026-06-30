@@ -1,0 +1,333 @@
+export const mercadoFresco = {
+  "id": "mercado_fresco",
+  "nombre": "Mercado Fresco",
+  "nodos": [
+    {
+      "id": "root_mercado_fresco",
+      "tipo": "raiz",
+      "nombre": "Inicio",
+      "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+      "pregunta": "¿Qué deseas buscar en Mercado Fresco?",
+      "respuesta": "Bienvenido a Mercado Fresco. Aquí encontrarás Panadería, Lácteos y Embutidos.",
+      "aristas": ["panaderia_mercado_fresco", "lacteos_mercado_fresco", "embutidos_mercado_fresco"]
+    },
+    {
+      "id": "panaderia_mercado_fresco",
+      "tipo": "categoria",
+      "nombre": "Panadería",
+      "sinonimos": ["panaderia", "pan", "horneado", "postres"],
+      "pregunta": "¿Qué tipo de pan se te antoja?",
+      "respuesta": "Tenemos opciones de Pan Dulce y Pan Salado.",
+      "aristas": ["sub_pan_dulce", "sub_pan_salado"]
+    },
+    {
+      "id": "sub_pan_dulce",
+      "tipo": "subcategoria",
+      "nombre": "Pan Dulce",
+      "sinonimos": ["dulce", "reposteria", "pastelito", "azucar"],
+      "pregunta": "¿Buscas conchas o donas?",
+      "respuesta": "Tenemos Conchas de Vainilla y Donas de Chocolate.",
+      "aristas": ["prod_concha", "prod_dona"]
+    },
+    {
+      "id": "sub_pan_salado",
+      "tipo": "subcategoria",
+      "nombre": "Pan Salado",
+      "sinonimos": ["salado", "frances", "bolillo", "baguette"],
+      "pregunta": "¿Prefieres Pan Frances o pan de caja?",
+      "respuesta": "Tenemos Pan Frances recién horneados y Pan de Caja integral.",
+      "aristas": ["prod_PanFrances", "prod_pan_caja"]
+    },
+    {
+      "id": "prod_concha",
+      "tipo": "producto",
+      "nombre": "Concha de Vainilla",
+      "sinonimos": ["concha", "vainilla", "pan dulce"],
+      "pregunta": "¿Agregamos la Concha?",
+      "precio": "0.60",
+      "respuesta": "La Concha de Vainilla cuesta $0.60.",
+      "aristas": ["comprar_concha", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_concha",
+      "nombre": "Agregar Concha de Vainilla al carrito",
+      "sinonimos": ["quiero la concha", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Concha de Vainilla.",
+      "aristas": ["sub_pan_dulce", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Concha de Vainilla", 0.60]
+    },
+    {
+      "id": "prod_dona",
+      "tipo": "producto",
+      "nombre": "Dona de Chocolate",
+      "sinonimos": ["dona", "chocolate", "rosquilla"],
+      "pregunta": "¿Agregamos la Dona?",
+      "precio": "0.85",
+      "respuesta": "La Dona de Chocolate cuesta $0.85.",
+      "aristas": ["comprar_dona", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_dona",
+      "nombre": "Agregar Dona de Chocolate al carrito",
+      "sinonimos": ["quiero la dona", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Dona de Chocolate.",
+      "aristas": ["sub_pan_dulce", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Dona de Chocolate", 0.85]
+    },
+    {
+      "id": "prod_PanFrances",
+      "tipo": "producto",
+      "nombre": "Pan Frances",
+      "sinonimos": ["pan frances", "frances", "pan blanco"],
+      "pregunta": "¿Agregamos el Bolillo?",
+      "precio": "0.25",
+      "respuesta": "El pan frances fresco cuesta $0.25.",
+      "aristas": ["comprar_PanFrances", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_PanFrances",
+      "nombre": "Agregar Pan Frances al carrito",
+      "sinonimos": ["quiero el pan frances", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Pan Frances.",
+      "aristas": ["sub_pan_salado", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Pan Frances", 0.25]
+    },
+    {
+      "id": "prod_pan_caja",
+      "tipo": "producto",
+      "nombre": "Pan de Caja Integral",
+      "sinonimos": ["pan de caja", "integral", "rodajas"],
+      "pregunta": "¿Agregamos el Pan de Caja?",
+      "precio": "2.50",
+      "respuesta": "El paquete de Pan de Caja cuesta $2.50.",
+      "aristas": ["comprar_pan_caja", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_pan_caja",
+      "nombre": "Agregar Pan de Caja Integral al carrito",
+      "sinonimos": ["quiero el pan de caja", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Pan de Caja Integral.",
+      "aristas": ["sub_pan_salado", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Pan de Caja Integral", 2.50]
+    },
+    {
+      "id": "lacteos_mercado_fresco",
+      "tipo": "categoria",
+      "nombre": "Lácteos",
+      "sinonimos": ["lacteos", "leche", "queso", "derivados"],
+      "pregunta": "¿Qué producto lácteo necesitas?",
+      "respuesta": "En la sección de lácteos tenemos Leches y Quesos.",
+      "aristas": ["sub_leches", "sub_quesos"]
+    },
+    {
+      "id": "sub_leches",
+      "tipo": "subcategoria",
+      "nombre": "Leches",
+      "sinonimos": ["leche", "liquido", "caja de leche"],
+      "pregunta": "¿Prefieres leche entera o deslactosada?",
+      "respuesta": "Tenemos Leche Entera y Leche Deslactosada en caja de 1L.",
+      "aristas": ["prod_leche_entera", "prod_leche_deslactosada"]
+    },
+    {
+      "id": "sub_quesos",
+      "tipo": "subcategoria",
+      "nombre": "Quesos",
+      "sinonimos": ["queso", "quesos", "derretir"],
+      "pregunta": "¿Buscas queso fresco o para derretir?",
+      "respuesta": "Tenemos Queso Fresco y Queso Mozzarella.",
+      "aristas": ["prod_queso_fresco", "prod_queso_mozzarella"]
+    },
+    {
+      "id": "prod_leche_entera",
+      "tipo": "producto",
+      "nombre": "Leche Entera",
+      "sinonimos": ["entera", "normal", "leche entera"],
+      "pregunta": "¿Agregamos la Leche Entera?",
+      "precio": "1.50",
+      "respuesta": "El litro de Leche Entera cuesta $1.50.",
+      "aristas": ["comprar_leche_entera", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_leche_entera",
+      "nombre": "Agregar Leche Entera al carrito",
+      "sinonimos": ["quiero la leche", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Leche Entera.",
+      "aristas": ["sub_leches", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Leche Entera", 1.50]
+    },
+    {
+      "id": "prod_leche_deslactosada",
+      "tipo": "producto",
+      "nombre": "Leche Deslactosada",
+      "sinonimos": ["deslactosada", "sin lactosa", "ligera"],
+      "pregunta": "¿Agregamos la Leche Deslactosada?",
+      "precio": "1.75",
+      "respuesta": "El litro de Leche Deslactosada cuesta $1.75.",
+      "aristas": ["comprar_leche_deslactosada", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_leche_deslactosada",
+      "nombre": "Agregar Leche Deslactosada al carrito",
+      "sinonimos": ["quiero la leche", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Leche Deslactosada.",
+      "aristas": ["sub_leches", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Leche Deslactosada", 1.75]
+    },
+    {
+      "id": "prod_queso_fresco",
+      "tipo": "producto",
+      "nombre": "Queso Fresco",
+      "sinonimos": ["fresco", "blanco", "cuajada"],
+      "pregunta": "¿Agregamos el Queso Fresco?",
+      "precio": "3.00",
+      "respuesta": "La libra de Queso Fresco cuesta $3.00.",
+      "aristas": ["comprar_queso_fresco", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_queso_fresco",
+      "nombre": "Agregar Queso Fresco al carrito",
+      "sinonimos": ["quiero el queso", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Queso Fresco.",
+      "aristas": ["sub_quesos", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Queso Fresco", 3.00]
+    },
+    {
+      "id": "prod_queso_mozzarella",
+      "tipo": "producto",
+      "nombre": "Queso Mozzarella",
+      "sinonimos": ["mozzarella", "derretir", "pizza"],
+      "pregunta": "¿Agregamos el Queso Mozzarella?",
+      "precio": "4.50",
+      "respuesta": "La libra de Mozzarella cuesta $4.50.",
+      "aristas": ["comprar_queso_mozzarella", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_queso_mozzarella",
+      "nombre": "Agregar Queso Mozzarella al carrito",
+      "sinonimos": ["quiero el queso", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Queso Mozzarella.",
+      "aristas": ["sub_quesos", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Queso Mozzarella", 4.50]
+    },
+    {
+      "id": "embutidos_mercado_fresco",
+      "tipo": "categoria",
+      "nombre": "Embutidos",
+      "sinonimos": ["embutidos", "carnes frias", "jamon", "salchicha"],
+      "pregunta": "¿Qué tipo de embutido buscas?",
+      "respuesta": "Tenemos disponibles Jamones y Salchichas.",
+      "aristas": ["sub_jamones", "sub_salchichas"]
+    },
+    {
+      "id": "sub_jamones",
+      "tipo": "subcategoria",
+      "nombre": "Jamones",
+      "sinonimos": ["jamon", "rebanadas"],
+      "pregunta": "¿Prefieres jamón de pavo o de pierna?",
+      "respuesta": "Tenemos Jamón de Pavo y Jamón de Pierna.",
+      "aristas": ["prod_jamon_pavo", "prod_jamon_pierna"]
+    },
+    {
+      "id": "sub_salchichas",
+      "tipo": "subcategoria",
+      "nombre": "Salchichas",
+      "sinonimos": ["salchicha", "hot dog", "viena"],
+      "pregunta": "¿Buscas salchicha de pavo o de pollo?",
+      "respuesta": "Tenemos Salchicha de Pavo y Salchicha de Pollo.",
+      "aristas": ["prod_salchicha_pavo", "prod_salchicha_pollo"]
+    },
+    {
+      "id": "prod_jamon_pavo",
+      "tipo": "producto",
+      "nombre": "Jamón de Pavo",
+      "sinonimos": ["pavo", "ligero", "jamon dieta", "jamon de pavo"],
+      "pregunta": "¿Agregamos el Jamón de Pavo?",
+      "precio": "3.50",
+      "respuesta": "La libra de Jamón de Pavo cuesta $3.50.",
+      "aristas": ["comprar_jamon_pavo", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_jamon_pavo",
+      "nombre": "Agregar Jamón de Pavo al carrito",
+      "sinonimos": ["quiero el jamon", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Jamón de Pavo.",
+      "aristas": ["sub_jamones", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Jamón de Pavo", 3.50]
+    },
+    {
+      "id": "prod_jamon_pierna",
+      "tipo": "producto",
+      "nombre": "Jamón de Pierna",
+      "sinonimos": ["pierna", "cerdo", "clasico"],
+      "pregunta": "¿Agregamos el Jamón de Pierna?",
+      "precio": "4.00",
+      "respuesta": "La libra de Jamón de Pierna cuesta $4.00.",
+      "aristas": ["comprar_jamon_pierna", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_jamon_pierna",
+      "nombre": "Agregar Jamón de Pierna al carrito",
+      "sinonimos": ["quiero el jamon", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Jamón de Pierna.",
+      "aristas": ["sub_jamones", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Jamón de Pierna", 4.00]
+    },
+    {
+      "id": "prod_salchicha_pavo",
+      "tipo": "producto",
+      "nombre": "Salchicha de Pavo",
+      "sinonimos": ["salchicha pavo", "salchichas"],
+      "pregunta": "¿Agregamos las Salchichas de Pavo?",
+      "precio": "2.00",
+      "respuesta": "El paquete de Salchicha de Pavo cuesta $2.00.",
+      "aristas": ["comprar_salchicha_pavo", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_salchicha_pavo",
+      "nombre": "Agregar Salchicha de Pavo al carrito",
+      "sinonimos": ["quiero las salchichas", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Salchichas de Pavo.",
+      "aristas": ["sub_salchichas", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Salchicha de Pavo", 2.00]
+    },
+    {
+      "id": "prod_salchicha_pollo",
+      "tipo": "producto",
+      "nombre": "Salchicha de Pollo",
+      "sinonimos": ["salchicha pollo", "aves"],
+      "pregunta": "¿Agregamos las Salchichas de Pollo?",
+      "precio": "1.80",
+      "respuesta": "El paquete de Salchicha de Pollo cuesta $1.80.",
+      "aristas": ["comprar_salchicha_pollo", "final_mercado_fresco"]
+    },
+    {
+      "id": "comprar_salchicha_pollo",
+      "nombre": "Agregar Salchicha de Pollo al carrito",
+      "sinonimos": ["quiero las salchichas", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Salchichas de Pollo.",
+      "aristas": ["sub_salchichas", "pagar_carrito", "final_mercado_fresco"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Salchicha de Pollo", 1.80]
+    },
+    {
+      "id": "final_mercado_fresco",
+      "tipo": "final",
+      "nombre": "Despedida",
+      "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin", "pagar"],
+      "pregunta": "",
+      "respuesta": "¡Gracias por preferir Mercado Fresco! Tus alimentos están listos para envío.",
+      "aristas": []
+    }
+  ]
+}

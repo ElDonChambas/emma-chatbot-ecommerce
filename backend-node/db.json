@@ -1,0 +1,1087 @@
+{
+  "tiendas": [
+    {
+      "id": "super_ahorro",
+      "nombre": "Super Ahorro",
+      "nodos": [
+        {
+          "id": "root_super_ahorro",
+          "tipo": "raiz",
+          "nombre": "Inicio",
+          "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+          "pregunta": "¿Qué deseas buscar en Super Ahorro?",
+          "respuesta": "Bienvenido. En Super Ahorro tenemos bebidas, snacks y limpieza.",
+          "aristas": ["bebidas_super_ahorro", "snacks_super_ahorro", "limpieza_super_ahorro"]
+        },
+        {
+          "id": "bebidas_super_ahorro",
+          "tipo": "categoria",
+          "nombre": "Bebidas",
+          "sinonimos": ["bebidas", "sed", "tomar", "liquido", "refresco"],
+          "pregunta": "¿Qué tipo de bebida buscas?",
+          "respuesta": "Dentro de bebidas tenemos: Refrescos, Jugos y Agua.",
+          "aristas": ["sub_refrescos", "sub_jugos", "sub_agua"]
+        },
+        {
+          "id": "sub_refrescos",
+          "tipo": "subcategoria",
+          "nombre": "Refrescos",
+          "sinonimos": ["refrescos", "gaseosas", "sodas", "colas", "carbonatadas"],
+          "pregunta": "¿Qué marca de refresco prefieres?",
+          "respuesta": "Tenemos Coca-Cola y Fanta disponibles.",
+          "aristas": ["prod_coca", "prod_fanta"]
+        },
+        {
+          "id": "sub_jugos",
+          "tipo": "subcategoria",
+          "nombre": "Jugos",
+          "sinonimos": ["jugos", "naturales", "frutas", "nectar"],
+          "pregunta": "¿Qué sabor de jugo buscas?",
+          "respuesta": "Tenemos Jugo de Naranja y Manzana.",
+          "aristas": ["prod_jugo_naranja", "prod_jugo_manzana"]
+        },
+        {
+          "id": "sub_agua",
+          "tipo": "subcategoria",
+          "nombre": "Agua",
+          "sinonimos": ["agua", "botella", "azul", "pura", "cristal"],
+          "pregunta": "¿Qué presentación de agua necesitas?",
+          "respuesta": "Tenemos agua embotellada personal cristal y alpina.",
+          "aristas": ["prod_agua_botella"]
+        },
+        {
+          "id": "prod_coca",
+          "tipo": "producto",
+          "nombre": "Coca Cola",
+          "sinonimos": ["coca", "cola", "negra", "coca-cola"],
+          "pregunta": "¿Quieres agregar Coca-Cola al carrito?",
+          "respuesta": "La Coca-Cola de 2.5L cuesta $2.50. ¿Deseas algo más?",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_fanta",
+          "tipo": "producto",
+          "nombre": "Fanta",
+          "sinonimos": ["fanta", "naranja", "uva"],
+          "pregunta": "¿Quieres agregar Fanta al carrito?",
+          "respuesta": "La Fanta de 2.5L cuesta $2.25. ¿Deseas algo más?",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_jugo_naranja",
+          "tipo": "producto",
+          "nombre": "Jugo Naranja",
+          "sinonimos": ["naranja", "citrico"],
+          "pregunta": "¿Agregamos el jugo de naranja?",
+          "respuesta": "El jugo de naranja natural cuesta $1.00.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_jugo_manzana",
+          "tipo": "producto",
+          "nombre": "Jugo Naranja",
+          "sinonimos": ["manzana"],
+          "pregunta": "¿Agregamos el jugo?",
+          "respuesta": "El jugo de manzana natural cuesta $1.00.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_agua_botella",
+          "tipo": "producto",
+          "nombre": "Agua Embotellada",
+          "sinonimos": ["cristal", "alpina", "botellita"],
+          "pregunta": "¿Agregamos el agua?",
+          "respuesta": "La botella de agua cuesta $0.75.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "snacks_super_ahorro",
+          "tipo": "categoria",
+          "nombre": "Snacks",
+          "sinonimos": ["snacks", "papas", "churros", "boquitas", "antojo"],
+          "pregunta": "¿Qué tipo de snack se te antoja?",
+          "respuesta": "Tenemos snacks Salados y Dulces.",
+          "aristas": ["sub_snacks_salados", "sub_snacks_dulces"]
+        },
+        {
+          "id": "sub_snacks_salados",
+          "tipo": "subcategoria",
+          "nombre": "Salados",
+          "sinonimos": ["salado", "sal", "papas", "frituras", "picante"],
+          "pregunta": "¿Prefieres papas o nachos?",
+          "respuesta": "Tenemos Lays Clásicas y Doritos Queso.",
+          "aristas": ["prod_lays", "prod_doritos"]
+        },
+        {
+          "id": "sub_snacks_dulces",
+          "tipo": "subcategoria",
+          "nombre": "Dulces",
+          "sinonimos": ["dulce", "galletas", "chocolate", "azucar"],
+          "pregunta": "¿Qué galleta prefieres?",
+          "respuesta": "Tenemos Oreo y Chokis.",
+          "aristas": ["prod_oreo", "prod_chokis"]
+        },
+        {
+          "id": "prod_lays",
+          "tipo": "producto",
+          "nombre": "Papas Lays",
+          "sinonimos": ["lays", "naturales", "lisas"],
+          "pregunta": "¿Agregamos las Lays?",
+          "respuesta": "Las Lays cuestan $1.50.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_doritos",
+          "tipo": "producto",
+          "nombre": "Doritos",
+          "sinonimos": ["doritos", "nachos", "queso", "triangulos"],
+          "pregunta": "¿Agregamos los Doritos?",
+          "respuesta": "Los Doritos cuestan $1.60.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_oreo",
+          "tipo": "producto",
+          "nombre": "Galletas Oreo",
+          "sinonimos": ["oreo", "crema", "sandwich"],
+          "pregunta": "¿Agregamos las Oreo?",
+          "respuesta": "El paquete de Oreo cuesta $1.00.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_chokis",
+          "tipo": "producto",
+          "nombre": "Galletas Chokis",
+          "sinonimos": ["chokis", "ispas", "chocochispas"],
+          "pregunta": "¿Agregamos las Chokis?",
+          "respuesta": "Las Chokis cuestan $1.10.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "limpieza_super_ahorro",
+          "tipo": "categoria",
+          "nombre": "Limpieza",
+          "sinonimos": ["limpieza", "aseo", "higiene", "casa"],
+          "pregunta": "¿Qué necesitas limpiar?",
+          "respuesta": "Tenemos productos para Ropa y para el Hogar (Pisos/Baños).",
+          "aristas": ["sub_limpieza_ropa", "sub_limpieza_hogar"]
+        },
+        {
+          "id": "sub_limpieza_ropa",
+          "tipo": "subcategoria",
+          "nombre": "Ropa",
+          "sinonimos": ["ropa", "lavadora", "vestido", "prendas"],
+          "pregunta": "¿Buscas detergente o suavizante?",
+          "respuesta": "Tenemos Detergente en polvo y Suavizante líquido.",
+          "aristas": ["prod_detergente", "prod_suavizante"]
+        },
+        {
+          "id": "sub_limpieza_hogar",
+          "tipo": "subcategoria",
+          "nombre": "Hogar",
+          "sinonimos": ["hogar", "piso", "baño", "cocina", "superficies"],
+          "pregunta": "¿Buscas desinfectante o lejía?",
+          "respuesta": "Tenemos Desinfectante de lavanda y Lejía.",
+          "aristas": ["prod_desinfectante", "prod_lejia"]
+        },
+        {
+          "id": "prod_detergente",
+          "tipo": "producto",
+          "nombre": "Detergente Ariel",
+          "sinonimos": ["ariel", "jabon", "polvo", "bolsa", "detergente"],
+          "pregunta": "¿Agregamos el Detergente?",
+          "respuesta": "La bolsa de Ariel cuesta $3.50.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_suavizante",
+          "tipo": "producto",
+          "nombre": "Suavizante Downy",
+          "sinonimos": ["downy", "suavitel", "suavizante", "liquido"],
+          "pregunta": "¿Agregamos el Suavizante?",
+          "respuesta": "El Downy cuesta $2.75.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_desinfectante",
+          "tipo": "producto",
+          "nombre": "Desinfectante Fabuloso",
+          "sinonimos": ["Fabuloso", "rinso", "aroma", "piso", "desinfectante"],
+          "pregunta": "¿Agregamos el Desinfectante?",
+          "respuesta": "El Fabuloso cuesta $1.25.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "prod_lejia",
+          "tipo": "producto",
+          "nombre": "Lejía Magia Blanca",
+          "sinonimos": ["lejia", "cloro", "blanqueador", "magia"],
+          "pregunta": "¿Agregamos la Lejía?",
+          "respuesta": "La botella de Lejía cuesta $0.90.",
+          "aristas": ["final_super_ahorro"]
+        },
+        {
+          "id": "final_super_ahorro",
+          "tipo": "final",
+          "nombre": "Despedida",
+          "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+          "pregunta": "",
+          "respuesta": "¡Gracias por comprar en Super Ahorro! Tu pedido ha sido procesado.",
+          "aristas": []
+        }
+      ]
+    },
+    {
+      "id": "gran_bazar",
+      "nombre": "Gran Bazar",
+      "nodos": [
+        {
+          "id": "root_gran_bazar",
+          "tipo": "raiz",
+          "nombre": "Inicio",
+          "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+          "pregunta": "¿Qué deseas buscar en Gran Bazar?",
+          "respuesta": "Bienvenido a Gran Bazar. Tenemos Tecnología, Cocina e Higiene.",
+          "aristas": ["tecno_gran_bazar", "cocina_gran_bazar", "higiene_gran_bazar"]
+        },
+        {
+          "id": "tecno_gran_bazar",
+          "tipo": "categoria",
+          "nombre": "Tecnología",
+          "sinonimos": ["tecnologia", "electronica", "gadgets", "tech"],
+          "pregunta": "¿Qué tipo de tecnología buscas?",
+          "respuesta": "Tenemos Audio y Accesorios de Cómputo.",
+          "aristas": ["sub_audio", "sub_computo"]
+        },
+        {
+          "id": "sub_audio",
+          "tipo": "subcategoria",
+          "nombre": "Audio",
+          "sinonimos": ["audio", "sonido", "musica", "escuchar"],
+          "pregunta": "¿Buscas audífonos o bocinas?",
+          "respuesta": "Tenemos Audífonos Bluetooth y Bocinas Portátiles.",
+          "aristas": ["prod_audifonos", "prod_bocina"]
+        },
+        {
+          "id": "sub_computo",
+          "tipo": "subcategoria",
+          "nombre": "Cómputo",
+          "sinonimos": ["computo", "pc", "ordenador", "perifericos"],
+          "pregunta": "¿Qué accesorio necesitas?",
+          "respuesta": "Tenemos Mouse inalámbrico y Teclado mecánico.",
+          "aristas": ["prod_mouse", "prod_teclado"]
+        },
+        {
+          "id": "prod_audifonos",
+          "tipo": "producto",
+          "nombre": "Audífonos Bluetooth",
+          "sinonimos": ["audifonos", "cascos", "bluetooth", "inalambricos"],
+          "pregunta": "¿Agregamos los Audífonos?",
+          "respuesta": "Los Audífonos cuestan $25.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_bocina",
+          "tipo": "producto",
+          "nombre": "Bocina Portátil",
+          "sinonimos": ["bocina", "parlante", "speaker"],
+          "pregunta": "¿Agregamos la Bocina?",
+          "respuesta": "La Bocina cuesta $15.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_mouse",
+          "tipo": "producto",
+          "nombre": "Mouse Inalámbrico",
+          "sinonimos": ["mouse", "raton", "optico"],
+          "pregunta": "¿Agregamos el Mouse?",
+          "respuesta": "El Mouse cuesta $10.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_teclado",
+          "tipo": "producto",
+          "nombre": "Teclado Mecánico",
+          "sinonimos": ["teclado", "keys", "mecanico"],
+          "pregunta": "¿Agregamos el Teclado?",
+          "respuesta": "El Teclado cuesta $35.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "cocina_gran_bazar",
+          "tipo": "categoria",
+          "nombre": "Cocina",
+          "sinonimos": ["cocina", "chef", "comida", "preparar"],
+          "pregunta": "¿Qué necesitas para tu cocina?",
+          "respuesta": "Tenemos Utensilios y Electrodomésticos.",
+          "aristas": ["sub_utensilios", "sub_electro"]
+        },
+        {
+          "id": "sub_utensilios",
+          "tipo": "subcategoria",
+          "nombre": "Utensilios",
+          "sinonimos": ["utensilios", "herramientas", "uso diario"],
+          "pregunta": "¿Buscas sartenes o cuchillos?",
+          "respuesta": "Tenemos Sartén antiadherente y Set de Cuchillos.",
+          "aristas": ["prod_sarten", "prod_cuchillos"]
+        },
+        {
+          "id": "sub_electro",
+          "tipo": "subcategoria",
+          "nombre": "Electrodomésticos",
+          "sinonimos": ["electro", "maquinas", "electricos", "Electrodomsticos", "Electrodomésticos"],
+          "pregunta": "¿Buscas licuadora o tostadora?",
+          "respuesta": "Tenemos Licuadora de 10 vel y Tostadora.",
+          "aristas": ["prod_licuadora", "prod_tostadora"]
+        },
+        {
+          "id": "prod_sarten",
+          "tipo": "producto",
+          "nombre": "Sartén Antiadherente",
+          "sinonimos": ["sarten", "teflon", "freir"],
+          "pregunta": "¿Agregamos el Sartén?",
+          "respuesta": "El Sartén cuesta $12.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_cuchillos",
+          "tipo": "producto",
+          "nombre": "Set de Cuchillos",
+          "sinonimos": ["cuchillos", "cortar", "navajas"],
+          "pregunta": "¿Agregamos los Cuchillos?",
+          "respuesta": "El Set de Cuchillos cuesta $18.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_licuadora",
+          "tipo": "producto",
+          "nombre": "Licuadora",
+          "sinonimos": ["licuadora", "batidora", "mezcladora"],
+          "pregunta": "¿Agregamos la Licuadora?",
+          "respuesta": "La Licuadora cuesta $30.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_tostadora",
+          "tipo": "producto",
+          "nombre": "Tostadora",
+          "sinonimos": ["tostadora", "pan", "tostar"],
+          "pregunta": "¿Agregamos la Tostadora?",
+          "respuesta": "La Tostadora cuesta $20.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "higiene_gran_bazar",
+          "tipo": "categoria",
+          "nombre": "Higiene",
+          "sinonimos": ["higiene", "personal", "baño", "cuidado"],
+          "pregunta": "¿Qué producto de higiene buscas?",
+          "respuesta": "Tenemos Cuidado Capilar y Cuidado Bucal.",
+          "aristas": ["sub_capilar", "sub_bucal"]
+        },
+        {
+          "id": "sub_capilar",
+          "tipo": "subcategoria",
+          "nombre": "Cuidado Capilar",
+          "sinonimos": ["pelo", "cabello", "cabeza", "capilar"],
+          "pregunta": "¿Buscas Shampoo o Acondicionador?",
+          "respuesta": "Tenemos Shampoo Anticaspa y Acondicionador.",
+          "aristas": ["prod_shampoo", "prod_acondicionador"]
+        },
+        {
+          "id": "sub_bucal",
+          "tipo": "subcategoria",
+          "nombre": "Cuidado Bucal",
+          "sinonimos": ["boca", "dientes", "dental"],
+          "pregunta": "¿Buscas pasta o cepillo?",
+          "respuesta": "Tenemos Pasta Dental y Cepillos de Bambú.",
+          "aristas": ["prod_pasta", "prod_cepillo"]
+        },
+        {
+          "id": "prod_shampoo",
+          "tipo": "producto",
+          "nombre": "Shampoo Anticaspa",
+          "sinonimos": ["shampoo", "champu", "jabon de pelo"],
+          "pregunta": "¿Agregamos el Shampoo?",
+          "respuesta": "El Shampoo cuesta $4.50.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_acondicionador",
+          "tipo": "producto",
+          "nombre": "Acondicionador",
+          "sinonimos": ["acondicionador", "suavidad", "crema"],
+          "pregunta": "¿Agregamos el Acondicionador?",
+          "respuesta": "El Acondicionador cuesta $4.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_pasta",
+          "tipo": "producto",
+          "nombre": "Pasta Dental",
+          "sinonimos": ["pasta", "dentifrico", "colgate"],
+          "pregunta": "¿Agregamos la Pasta?",
+          "respuesta": "La Pasta Dental cuesta $1.75.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "prod_cepillo",
+          "tipo": "producto",
+          "nombre": "Cepillo de Bambú",
+          "sinonimos": ["cepillo", "dientes", "bambu"],
+          "pregunta": "¿Agregamos el Cepillo?",
+          "respuesta": "El Cepillo cuesta $2.00.",
+          "aristas": ["final_gran_bazar"]
+        },
+        {
+          "id": "final_gran_bazar",
+          "tipo": "final",
+          "nombre": "Despedida",
+          "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+          "pregunta": "",
+          "respuesta": "¡Gracias por visitar Gran Bazar! Esperamos verte pronto.",
+          "aristas": []
+        }
+      ]
+    },
+    {
+      "id": "mercado_fresco",
+      "nombre": "Mercado Fresco",
+      "nodos": [
+        {
+          "id": "root_mercado_fresco",
+          "tipo": "raiz",
+          "nombre": "Inicio",
+          "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+          "pregunta": "¿Qué deseas buscar en Mercado Fresco?",
+          "respuesta": "Bienvenido a Mercado Fresco. Aquí encontrarás Panadería, Lácteos y Embutidos.",
+          "aristas": ["panaderia_mercado_fresco", "lacteos_mercado_fresco", "embutidos_mercado_fresco"]
+        },
+        {
+          "id": "panaderia_mercado_fresco",
+          "tipo": "categoria",
+          "nombre": "Panadería",
+          "sinonimos": ["panaderia", "pan", "horneado", "postres"],
+          "pregunta": "¿Qué tipo de pan se te antoja?",
+          "respuesta": "Tenemos opciones de Pan Dulce y Pan Salado.",
+          "aristas": ["sub_pan_dulce", "sub_pan_salado"]
+        },
+        {
+          "id": "sub_pan_dulce",
+          "tipo": "subcategoria",
+          "nombre": "Pan Dulce",
+          "sinonimos": ["dulce", "reposteria", "pastelito", "azucar"],
+          "pregunta": "¿Buscas conchas o donas?",
+          "respuesta": "Tenemos Conchas de Vainilla y Donas de Chocolate.",
+          "aristas": ["prod_concha", "prod_dona"]
+        },
+        {
+          "id": "sub_pan_salado",
+          "tipo": "subcategoria",
+          "nombre": "Pan Salado",
+          "sinonimos": ["salado", "frances", "bolillo", "baguette"],
+          "pregunta": "¿Prefieres Pan Frances o pan de caja?",
+          "respuesta": "Tenemos Pan Frances recién horneados y Pan de Caja integral.",
+          "aristas": ["prod_PanFrances", "prod_pan_caja"]
+        },
+        {
+          "id": "prod_concha",
+          "tipo": "producto",
+          "nombre": "Concha de Vainilla",
+          "sinonimos": ["concha", "vainilla", "pan dulce"],
+          "pregunta": "¿Agregamos la Concha?",
+          "respuesta": "La Concha de Vainilla cuesta $0.60.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_dona",
+          "tipo": "producto",
+          "nombre": "Dona de Chocolate",
+          "sinonimos": ["dona", "chocolate", "rosquilla"],
+          "pregunta": "¿Agregamos la Dona?",
+          "respuesta": "La Dona de Chocolate cuesta $0.85.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_PanFrances",
+          "tipo": "producto",
+          "nombre": "Pan Frances",
+          "sinonimos": ["pan frances", "frances", "pan blanco"],
+          "pregunta": "¿Agregamos el Bolillo?",
+          "respuesta": "El pan frances fresco cuesta $0.25.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_pan_caja",
+          "tipo": "producto",
+          "nombre": "Pan de Caja Integral",
+          "sinonimos": ["pan de caja", "integral", "rodajas"],
+          "pregunta": "¿Agregamos el Pan de Caja?",
+          "respuesta": "El paquete de Pan de Caja cuesta $2.50.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "lacteos_mercado_fresco",
+          "tipo": "categoria",
+          "nombre": "Lácteos",
+          "sinonimos": ["lacteos", "leche", "queso", "derivados"],
+          "pregunta": "¿Qué producto lácteo necesitas?",
+          "respuesta": "En la sección de lácteos tenemos Leches y Quesos.",
+          "aristas": ["sub_leches", "sub_quesos"]
+        },
+        {
+          "id": "sub_leches",
+          "tipo": "subcategoria",
+          "nombre": "Leches",
+          "sinonimos": ["leche", "liquido", "caja de leche"],
+          "pregunta": "¿Prefieres leche entera o deslactosada?",
+          "respuesta": "Tenemos Leche Entera y Leche Deslactosada en caja de 1L.",
+          "aristas": ["prod_leche_entera", "prod_leche_deslactosada"]
+        },
+        {
+          "id": "sub_quesos",
+          "tipo": "subcategoria",
+          "nombre": "Quesos",
+          "sinonimos": ["queso", "quesos", "derretir"],
+          "pregunta": "¿Buscas queso fresco o para derretir?",
+          "respuesta": "Tenemos Queso Fresco y Queso Mozzarella.",
+          "aristas": ["prod_queso_fresco", "prod_queso_mozzarella"]
+        },
+        {
+          "id": "prod_leche_entera",
+          "tipo": "producto",
+          "nombre": "Leche Entera",
+          "sinonimos": ["entera", "normal", "leche entera"],
+          "pregunta": "¿Agregamos la Leche Entera?",
+          "respuesta": "El litro de Leche Entera cuesta $1.50.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_leche_deslactosada",
+          "tipo": "producto",
+          "nombre": "Leche Deslactosada",
+          "sinonimos": ["deslactosada", "sin lactosa", "ligera"],
+          "pregunta": "¿Agregamos la Leche Deslactosada?",
+          "respuesta": "El litro de Leche Deslactosada cuesta $1.75.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_queso_fresco",
+          "tipo": "producto",
+          "nombre": "Queso Fresco",
+          "sinonimos": ["fresco", "blanco", "cuajada"],
+          "pregunta": "¿Agregamos el Queso Fresco?",
+          "respuesta": "La libra de Queso Fresco cuesta $3.00.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_queso_mozzarella",
+          "tipo": "producto",
+          "nombre": "Queso Mozzarella",
+          "sinonimos": ["mozzarella", "derretir", "pizza"],
+          "pregunta": "¿Agregamos el Queso Mozzarella?",
+          "respuesta": "La libra de Mozzarella cuesta $4.50.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "embutidos_mercado_fresco",
+          "tipo": "categoria",
+          "nombre": "Embutidos",
+          "sinonimos": ["embutidos", "carnes frias", "jamon", "salchicha"],
+          "pregunta": "¿Qué tipo de embutido buscas?",
+          "respuesta": "Tenemos disponibles Jamones y Salchichas.",
+          "aristas": ["sub_jamones", "sub_salchichas"]
+        },
+        {
+          "id": "sub_jamones",
+          "tipo": "subcategoria",
+          "nombre": "Jamones",
+          "sinonimos": ["jamon", "rebanadas"],
+          "pregunta": "¿Prefieres jamón de pavo o de pierna?",
+          "respuesta": "Tenemos Jamón de Pavo y Jamón de Pierna.",
+          "aristas": ["prod_jamon_pavo", "prod_jamon_pierna"]
+        },
+        {
+          "id": "sub_salchichas",
+          "tipo": "subcategoria",
+          "nombre": "Salchichas",
+          "sinonimos": ["salchicha", "hot dog", "viena"],
+          "pregunta": "¿Buscas salchicha de pavo o de pollo?",
+          "respuesta": "Tenemos Salchicha de Pavo y Salchicha de Pollo.",
+          "aristas": ["prod_salchicha_pavo", "prod_salchicha_pollo"]
+        },
+        {
+          "id": "prod_jamon_pavo",
+          "tipo": "producto",
+          "nombre": "Jamón de Pavo",
+          "sinonimos": ["pavo", "ligero", "jamon dieta", "jamon de pavo"],
+          "pregunta": "¿Agregamos el Jamón de Pavo?",
+          "respuesta": "La libra de Jamón de Pavo cuesta $3.50.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_jamon_pierna",
+          "tipo": "producto",
+          "nombre": "Jamón de Pierna",
+          "sinonimos": ["pierna", "cerdo", "clasico"],
+          "pregunta": "¿Agregamos el Jamón de Pierna?",
+          "respuesta": "La libra de Jamón de Pierna cuesta $4.00.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_salchicha_pavo",
+          "tipo": "producto",
+          "nombre": "Salchicha de Pavo",
+          "sinonimos": ["salchicha pavo", "salchichas"],
+          "pregunta": "¿Agregamos las Salchichas de Pavo?",
+          "respuesta": "El paquete de Salchicha de Pavo cuesta $2.00.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "prod_salchicha_pollo",
+          "tipo": "producto",
+          "nombre": "Salchicha de Pollo",
+          "sinonimos": ["salchicha pollo", "aves"],
+          "pregunta": "¿Agregamos las Salchichas de Pollo?",
+          "respuesta": "El paquete de Salchicha de Pollo cuesta $1.80.",
+          "aristas": ["final_mercado_fresco"]
+        },
+        {
+          "id": "final_mercado_fresco",
+          "tipo": "final",
+          "nombre": "Despedida",
+          "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin", "pagar"],
+          "pregunta": "",
+          "respuesta": "¡Gracias por preferir Mercado Fresco! Tus alimentos están listos para envío.",
+          "aristas": []
+        }
+      ]
+    }, 
+    {
+      "id": "espacio_design",
+      "nombre": "Espacio Design",
+      "nodos": [
+        {
+          "id": "root_espacio_design",
+          "tipo": "raiz",
+          "nombre": "Inicio",
+          "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+          "pregunta": "¿Qué deseas buscar en Espacio Design?",
+          "respuesta": "Bienvenido a Espacio Design. Tenemos Muebles de decoración, Muebles de cocina y Papelería.",
+          "aristas": ["cat_decoracion", "cat_cocina", "cat_papeleria"]
+        },
+        {
+          "id": "cat_decoracion",
+          "tipo": "categoria",
+          "nombre": "Muebles de Decoración",
+          "sinonimos": ["decoracion", "sala", "adorno", "muebles", "deco"],
+          "pregunta": "¿Qué estilo de decoración buscas?",
+          "respuesta": "Para decoración tenemos opciones para Sala e Iluminación.",
+          "aristas": ["sub_sala", "sub_iluminacion"]
+        },
+        {
+          "id": "sub_sala",
+          "tipo": "subcategoria",
+          "nombre": "Sala",
+          "sinonimos": ["sala", "estar", "sillon", "centro"],
+          "pregunta": "¿Buscas sofás o mesas?",
+          "respuesta": "Tenemos Sofá de dos plazas y Mesa de centro moderna.",
+          "aristas": ["prod_sofa", "prod_mesa_centro"]
+        },
+        {
+          "id": "sub_iluminacion",
+          "tipo": "subcategoria",
+          "nombre": "Iluminación",
+          "sinonimos": ["iluminacion", "luz", "lampara", "foco"],
+          "pregunta": "¿Qué tipo de lámpara necesitas?",
+          "respuesta": "Tenemos Lámpara de pie y Lámpara de escritorio.",
+          "aristas": ["prod_lampara_pie", "prod_lampara_escritorio"]
+        },
+        {
+          "id": "prod_sofa",
+          "tipo": "producto",
+          "nombre": "Sofá Gris Nórdico",
+          "sinonimos": ["sofa", "sillon", "gris", "nordico"],
+          "pregunta": "¿Agregamos el Sofá?",
+          "respuesta": "El Sofá Gris Nórdico cuesta $250.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_mesa_centro",
+          "tipo": "producto",
+          "nombre": "Mesa de Centro",
+          "sinonimos": ["mesa", "centro", "madera", "cafe"],
+          "pregunta": "¿Agregamos la Mesa de Centro?",
+          "respuesta": "La Mesa de Centro minimalista cuesta $85.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_lampara_pie",
+          "tipo": "producto",
+          "nombre": "Lámpara de Pie",
+          "sinonimos": ["lampara pie", "alta", "esquina"],
+          "pregunta": "¿Agregamos la Lámpara de Pie?",
+          "respuesta": "La Lámpara de Pie industrial cuesta $45.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_lampara_escritorio",
+          "tipo": "producto",
+          "nombre": "Lámpara de Escritorio",
+          "sinonimos": ["lampara escritorio", "mesa", "lectura"],
+          "pregunta": "¿Agregamos la Lámpara de Escritorio?",
+          "respuesta": "La Lámpara de Escritorio LED cuesta $20.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "cat_cocina",
+          "tipo": "categoria",
+          "nombre": "Muebles de Cocina",
+          "sinonimos": ["cocina", "gabinete", "comedor", "cocinar"],
+          "pregunta": "¿Qué mueble de cocina necesitas?",
+          "respuesta": "Tenemos opciones de Almacenamiento y Mesas.",
+          "aristas": ["sub_almacenaje", "sub_mesas_cocina"]
+        },
+        {
+          "id": "sub_almacenaje",
+          "tipo": "subcategoria",
+          "nombre": "Almacenamiento",
+          "sinonimos": ["almacenaje", "guardar", "alacena", "estante", "almacenamiento"],
+          "pregunta": "¿Buscas alacena o carrito auxiliar?",
+          "respuesta": "Tenemos Alacena vertical y Carrito auxiliar.",
+          "aristas": ["prod_alacena", "prod_carrito"]
+        },
+        {
+          "id": "sub_mesas_cocina",
+          "tipo": "subcategoria",
+          "nombre": "Mesas y Sillas",
+          "sinonimos": ["mesas", "sillas", "comedor"],
+          "pregunta": "¿Buscas mesa o taburetes?",
+          "respuesta": "Tenemos Mesa desayunadora y Taburete alto.",
+          "aristas": ["prod_mesa_desayuno", "prod_taburete"]
+        },
+        {
+          "id": "prod_alacena",
+          "tipo": "producto",
+          "nombre": "Alacena Vertical",
+          "sinonimos": ["alacena", "mueble alto", "despensa"],
+          "pregunta": "¿Agregamos la Alacena?",
+          "respuesta": "La Alacena Vertical blanca cuesta $120.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_carrito",
+          "tipo": "producto",
+          "nombre": "Carrito Auxiliar",
+          "sinonimos": ["carrito", "ruedas", "verduras", "organizador"],
+          "pregunta": "¿Agregamos el Carrito?",
+          "respuesta": "El Carrito Auxiliar de metal cuesta $35.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_mesa_desayuno",
+          "tipo": "producto",
+          "nombre": "Mesa Desayunadora",
+          "sinonimos": ["mesa", "desayuno", "barra", "desayunador"],
+          "pregunta": "¿Agregamos la Mesa?",
+          "respuesta": "La Mesa Desayunadora pequeña cuesta $90.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_taburete",
+          "tipo": "producto",
+          "nombre": "Taburete Alto",
+          "sinonimos": ["taburete", "silla alta", "banco"],
+          "pregunta": "¿Agregamos el Taburete?",
+          "respuesta": "El Taburete Alto cuesta $25.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "cat_papeleria",
+          "tipo": "categoria",
+          "nombre": "Papelería",
+          "sinonimos": ["papeleria", "oficina", "escuela", "utiles"],
+          "pregunta": "¿Qué artículo de papelería buscas?",
+          "respuesta": "Tenemos Cuadernos y Escritura.",
+          "aristas": ["sub_cuadernos", "sub_escritura"]
+        },
+        {
+          "id": "sub_cuadernos",
+          "tipo": "subcategoria",
+          "nombre": "Cuadernos y Agendas",
+          "sinonimos": ["cuaderno", "libreta", "agenda", "papel"],
+          "pregunta": "¿Prefieres agenda o libreta?",
+          "respuesta": "Tenemos Agenda Ejecutiva y Libreta de notas.",
+          "aristas": ["prod_agenda", "prod_libreta"]
+        },
+        {
+          "id": "sub_escritura",
+          "tipo": "subcategoria",
+          "nombre": "Escritura",
+          "sinonimos": ["escritura", "lapiz", "pluma", "escribir"],
+          "pregunta": "¿Buscas bolígrafos o plumones?",
+          "respuesta": "Tenemos Set de Bolígrafos y Plumones Pastel.",
+          "aristas": ["prod_boligrafos", "prod_plumones"]
+        },
+        {
+          "id": "prod_agenda",
+          "tipo": "producto",
+          "nombre": "Agenda Ejecutiva",
+          "sinonimos": ["agenda", "diario", "planificador", "ejecutiva"],
+          "pregunta": "¿Agregamos la Agenda?",
+          "respuesta": "La Agenda Ejecutiva 2026 cuesta $15.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_libreta",
+          "tipo": "producto",
+          "nombre": "Libreta de Notas",
+          "sinonimos": ["libreta", "apuntes"],
+          "pregunta": "¿Agregamos la Libreta?",
+          "respuesta": "La Libreta de tapa dura cuesta $8.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_boligrafos",
+          "tipo": "producto",
+          "nombre": "Set de lapiceros",
+          "sinonimos": ["boligrafos", "lapiceros", "plumas", "tinta"],
+          "pregunta": "¿Agregamos los lapiceros?",
+          "respuesta": "El Set de 3 lapiceros finos cuesta $5.00.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "prod_plumones",
+          "tipo": "producto",
+          "nombre": "Plumones Pastel",
+          "sinonimos": ["plumones", "resaltadores", "marcadores", "colores"],
+          "pregunta": "¿Agregamos los Plumones?",
+          "respuesta": "El paquete de Plumones Pastel cuesta $6.50.",
+          "aristas": ["final_espacio_design"]
+        },
+        {
+          "id": "final_espacio_design",
+          "tipo": "final",
+          "nombre": "Despedida",
+          "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+          "pregunta": "",
+          "respuesta": "¡Gracias por visitar Espacio Design! Esperamos que disfrutes tus compras.",
+          "aristas": []
+        }
+      ]
+    },
+    {
+      "id": "huerto_real",
+      "nombre": "Huerto Real",
+      "nodos": [
+        {
+          "id": "root_huerto_real",
+          "tipo": "raiz",
+          "nombre": "Inicio",
+          "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+          "pregunta": "¿Qué deseas buscar en Huerto Real?",
+          "respuesta": "Bienvenido a Huerto Real. Ofrecemos lo mejor en Frutas, Verduras y Carnes.",
+          "aristas": ["cat_frutas", "cat_verduras", "cat_carnes"]
+        },
+        {
+          "id": "cat_frutas",
+          "tipo": "categoria",
+          "nombre": "Frutas",
+          "sinonimos": ["fruta", "frutas", "dulce", "vitaminas"],
+          "pregunta": "¿Qué tipo de fruta buscas?",
+          "respuesta": "Tenemos frutas Cítricas y frutas Tropicales.",
+          "aristas": ["sub_citricas", "sub_tropicales"]
+        },
+        {
+          "id": "sub_citricas",
+          "tipo": "subcategoria",
+          "nombre": "Cítricas",
+          "sinonimos": ["citricos", "acido", "jugo", "vitamina c"],
+          "pregunta": "¿Buscas limones o mandarinas?",
+          "respuesta": "Tenemos Limón Pérsico y Mandarina dulce.",
+          "aristas": ["prod_limon", "prod_mandarina"]
+        },
+        {
+          "id": "sub_tropicales",
+          "tipo": "subcategoria",
+          "nombre": "Tropicales",
+          "sinonimos": ["tropical", "dulces", "banana", "piña", "frutas tropicales", "fruta tropical"],
+          "pregunta": "¿Prefieres guineo o piña?",
+          "respuesta": "Tenemos guineo de seda y Piña Golden.",
+          "aristas": ["prod_banano", "prod_pina"]
+        },
+        {
+          "id": "prod_limon",
+          "tipo": "producto",
+          "nombre": "Limón Pérsico",
+          "sinonimos": ["limon", "limones", "verde", "persico"],
+          "pregunta": "¿Agregamos los limones?",
+          "respuesta": "La mano de Limón Pérsico cuesta $1.00.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_mandarina",
+          "tipo": "producto",
+          "nombre": "Mandarina",
+          "sinonimos": ["mandarina", "gajos", "naranja"],
+          "pregunta": "¿Agregamos las mandarinas?",
+          "respuesta": "La bolsa de Mandarinas cuesta $1.50.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_banano",
+          "tipo": "producto",
+          "nombre": "Guineo",
+          "sinonimos": ["banano", "banana", "guineo"],
+          "pregunta": "¿Agregamos los guineos?",
+          "respuesta": "La docena de guineos cuesta $1.25.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_pina",
+          "tipo": "producto",
+          "nombre": "Piña Golden",
+          "sinonimos": ["piña", "pina", "golden", "ananás"],
+          "pregunta": "¿Agregamos la Piña?",
+          "respuesta": "La Piña Golden grande cuesta $2.00.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "cat_verduras",
+          "tipo": "categoria",
+          "nombre": "Verduras",
+          "sinonimos": ["verdura", "vegetales", "legumbres", "verde"],
+          "pregunta": "¿Qué vegetales necesitas hoy?",
+          "respuesta": "Tenemos Hojas Verdes y Vegetales de Raíz.",
+          "aristas": ["sub_hojas", "sub_raiz"]
+        },
+        {
+          "id": "sub_hojas",
+          "tipo": "subcategoria",
+          "nombre": "Hojas Verdes",
+          "sinonimos": ["hojas", "ensalada", "verde"],
+          "pregunta": "¿Buscas lechuga o espinaca?",
+          "respuesta": "Tenemos Lechuga Romana y Espinaca fresca.",
+          "aristas": ["prod_lechuga", "prod_espinaca"]
+        },
+        {
+          "id": "sub_raiz",
+          "tipo": "subcategoria",
+          "nombre": "De Raíz",
+          "sinonimos": ["raiz", "tuberculo", "tierra", "vegetales de raiz"],
+          "pregunta": "¿Buscas papas o zanahorias?",
+          "respuesta": "Tenemos Papas lavadas y Zanahorias.",
+          "aristas": ["prod_papa", "prod_zanahoria"]
+        },
+        {
+          "id": "prod_lechuga",
+          "tipo": "producto",
+          "nombre": "Lechuga Romana",
+          "sinonimos": ["lechuga", "romana", "ensalada", "lechuga romana"],
+          "pregunta": "¿Agregamos la Lechuga?",
+          "respuesta": "La Lechuga Romana cuesta $0.90.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_espinaca",
+          "tipo": "producto",
+          "nombre": "Espinaca",
+          "sinonimos": ["espinaca", "hojas", "hierro"],
+          "pregunta": "¿Agregamos la Espinaca?",
+          "respuesta": "El manojo de Espinaca cuesta $1.10.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_papa",
+          "tipo": "producto",
+          "nombre": "Papa Blanca",
+          "sinonimos": ["papa", "patata", "pure"],
+          "pregunta": "¿Agregamos las Papas?",
+          "respuesta": "La libra de Papa cuesta $0.75.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_zanahoria",
+          "tipo": "producto",
+          "nombre": "Zanahoria",
+          "sinonimos": ["zanahoria", "naranja", "conejo"],
+          "pregunta": "¿Agregamos las Zanahorias?",
+          "respuesta": "La bolsa de Zanahorias cuesta $0.85.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "cat_carnes",
+          "tipo": "categoria",
+          "nombre": "Carnes",
+          "sinonimos": ["carne", "roja", "pollo", "proteina"],
+          "pregunta": "¿Qué tipo de carne buscas?",
+          "respuesta": "Tenemos cortes de Res y Pollo fresco.",
+          "aristas": ["sub_res", "sub_pollo"]
+        },
+        {
+          "id": "sub_res",
+          "tipo": "subcategoria",
+          "nombre": "Res",
+          "sinonimos": ["res", "vaca", "roja", "bistec"],
+          "pregunta": "¿Buscas carne molida o para asar?",
+          "respuesta": "Tenemos Carne Molida Especial y Puyaso.",
+          "aristas": ["prod_molida", "prod_puyaso"]
+        },
+        {
+          "id": "sub_pollo",
+          "tipo": "subcategoria",
+          "nombre": "Pollo",
+          "sinonimos": ["pollo", "ave", "blanca"],
+          "pregunta": "¿Prefieres pechuga o muslos?",
+          "respuesta": "Tenemos Pechuga deshuesada y Muslos de pollo.",
+          "aristas": ["prod_pechuga", "prod_muslos"]
+        },
+        {
+          "id": "prod_molida",
+          "tipo": "producto",
+          "nombre": "Carne Molida",
+          "sinonimos": ["molida", "torta", "hamburguesa"],
+          "pregunta": "¿Agregamos la Carne Molida?",
+          "respuesta": "La libra de Carne Molida cuesta $4.50.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_puyaso",
+          "tipo": "producto",
+          "nombre": "Puyaso",
+          "sinonimos": ["puyaso", "corte", "asado", "parrillada"],
+          "pregunta": "¿Agregamos el Puyaso?",
+          "respuesta": "La libra de Puyaso cuesta $6.50.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_pechuga",
+          "tipo": "producto",
+          "nombre": "Pechuga de Pollo",
+          "sinonimos": ["pechuga", "filete", "sin hueso"],
+          "pregunta": "¿Agregamos la Pechuga?",
+          "respuesta": "La libra de Pechuga cuesta $3.75.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "prod_muslos",
+          "tipo": "producto",
+          "nombre": "Muslos de Pollo",
+          "sinonimos": ["muslos", "pierna", "pollo"],
+          "pregunta": "¿Agregamos los Muslos?",
+          "respuesta": "La libra de Muslos cuesta $2.25.",
+          "aristas": ["final_huerto_real"]
+        },
+        {
+          "id": "final_huerto_real",
+          "tipo": "final",
+          "nombre": "Despedida",
+          "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+          "pregunta": "",
+          "respuesta": "¡Gracias por comprar en Huerto Real! Disfruta la frescura.",
+          "aristas": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+export const huertoReal = {
+  "id": "huerto_real",
+  "nombre": "Huerto Real",
+  "nodos": [
+    {
+      "id": "root_huerto_real",
+      "tipo": "raiz",
+      "nombre": "Inicio",
+      "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+      "pregunta": "¿Qué deseas buscar en Huerto Real?",
+      "respuesta": "Bienvenido a Huerto Real. Ofrecemos lo mejor en Frutas, Verduras y Carnes.",
+      "aristas": ["cat_frutas", "cat_verduras", "cat_carnes"]
+    },
+    {
+      "id": "cat_frutas",
+      "tipo": "categoria",
+      "nombre": "Frutas",
+      "sinonimos": ["fruta", "frutas", "dulce", "vitaminas"],
+      "pregunta": "¿Qué tipo de fruta buscas?",
+      "respuesta": "Tenemos frutas Cítricas y frutas Tropicales.",
+      "aristas": ["sub_citricas", "sub_tropicales"]
+    },
+    {
+      "id": "sub_citricas",
+      "tipo": "subcategoria",
+      "nombre": "Cítricas",
+      "sinonimos": ["citricos", "acido", "jugo", "vitamina c"],
+      "pregunta": "¿Buscas limones o mandarinas?",
+      "respuesta": "Tenemos Limón Pérsico y Mandarina dulce.",
+      "aristas": ["prod_limon", "prod_mandarina"]
+    },
+    {
+      "id": "sub_tropicales",
+      "tipo": "subcategoria",
+      "nombre": "Tropicales",
+      "sinonimos": ["tropical", "dulces", "banana", "piña", "frutas tropicales", "fruta tropical"],
+      "pregunta": "¿Prefieres guineo o piña?",
+      "respuesta": "Tenemos guineo de seda y Piña Golden.",
+      "aristas": ["prod_banano", "prod_pina"]
+    },
+    {
+      "id": "prod_limon",
+      "tipo": "producto",
+      "nombre": "Limón Pérsico",
+      "sinonimos": ["limon", "limones", "verde", "persico"],
+      "pregunta": "¿Agregamos los limones?",
+      "precio": "1.00",
+      "respuesta": "La mano de Limón Pérsico cuesta $1.00.",
+      "aristas": ["comprar_limon", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_limon",
+      "nombre": "Agregar Limón Pérsico al carrito",
+      "sinonimos": ["quiero los limones", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Limones.",
+      "aristas": ["sub_citricas", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Limón Pérsico", 1.00]
+    },
+    {
+      "id": "prod_mandarina",
+      "tipo": "producto",
+      "nombre": "Mandarina",
+      "sinonimos": ["mandarina", "gajos", "naranja"],
+      "pregunta": "¿Agregamos las mandarinas?",
+      "precio": "1.50",
+      "respuesta": "La bolsa de Mandarinas cuesta $1.50.",
+      "aristas": ["comprar_mandarina", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_mandarina",
+      "nombre": "Agregar Mandarina al carrito",
+      "sinonimos": ["quiero las mandarinas", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Mandarinas.",
+      "aristas": ["sub_citricas", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Mandarina", 1.50]
+    },
+    {
+      "id": "prod_banano",
+      "tipo": "producto",
+      "nombre": "Guineo",
+      "sinonimos": ["banano", "banana", "guineo"],
+      "pregunta": "¿Agregamos los guineos?",
+      "precio": "1.25",
+      "respuesta": "La docena de guineos cuesta $1.25.",
+      "aristas": ["comprar_banano", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_banano",
+      "nombre": "Agregar Guineo al carrito",
+      "sinonimos": ["quiero los guineos", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Guineos.",
+      "aristas": ["sub_tropicales", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Guineo", 1.25]
+    },
+    {
+      "id": "prod_pina",
+      "tipo": "producto",
+      "nombre": "Piña Golden",
+      "sinonimos": ["piña", "pina", "golden", "ananás"],
+      "pregunta": "¿Agregamos la Piña?",
+      "precio": "2.00",
+      "respuesta": "La Piña Golden grande cuesta $2.00.",
+      "aristas": ["comprar_pina", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_pina",
+      "nombre": "Agregar Piña Golden al carrito",
+      "sinonimos": ["quiero la piña", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Piña Golden.",
+      "aristas": ["sub_tropicales", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Piña Golden", 2.00]
+    },
+    {
+      "id": "cat_verduras",
+      "tipo": "categoria",
+      "nombre": "Verduras",
+      "sinonimos": ["verdura", "vegetales", "legumbres", "verde"],
+      "pregunta": "¿Qué vegetales necesitas hoy?",
+      "respuesta": "Tenemos Hojas Verdes y Vegetales de Raíz.",
+      "aristas": ["sub_hojas", "sub_raiz"]
+    },
+    {
+      "id": "sub_hojas",
+      "tipo": "subcategoria",
+      "nombre": "Hojas Verdes",
+      "sinonimos": ["hojas", "ensalada", "verde"],
+      "pregunta": "¿Buscas lechuga o espinaca?",
+      "respuesta": "Tenemos Lechuga Romana y Espinaca fresca.",
+      "aristas": ["prod_lechuga", "prod_espinaca"]
+    },
+    {
+      "id": "sub_raiz",
+      "tipo": "subcategoria",
+      "nombre": "De Raíz",
+      "sinonimos": ["raiz", "tuberculo", "tierra", "vegetales de raiz"],
+      "pregunta": "¿Buscas papas o zanahorias?",
+      "respuesta": "Tenemos Papas lavadas y Zanahorias.",
+      "aristas": ["prod_papa", "prod_zanahoria"]
+    },
+    {
+      "id": "prod_lechuga",
+      "tipo": "producto",
+      "nombre": "Lechuga Romana",
+      "sinonimos": ["lechuga", "romana", "ensalada", "lechuga romana"],
+      "pregunta": "¿Agregamos la Lechuga?",
+      "precio": "0.90",
+      "respuesta": "La Lechuga Romana cuesta $0.90.",
+      "aristas": ["comprar_lechuga", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_lechuga",
+      "nombre": "Agregar Lechuga Romana al carrito",
+      "sinonimos": ["quiero la lechuga", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Lechuga Romana.",
+      "aristas": ["sub_hojas", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Lechuga Romana", 0.90]
+    },
+    {
+      "id": "prod_espinaca",
+      "tipo": "producto",
+      "nombre": "Espinaca",
+      "sinonimos": ["espinaca", "hojas", "hierro"],
+      "pregunta": "¿Agregamos la Espinaca?",
+      "precio": "1.10",
+      "respuesta": "El manojo de Espinaca cuesta $1.10.",
+      "aristas": ["comprar_espinaca", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_espinaca",
+      "nombre": "Agregar Espinaca al carrito",
+      "sinonimos": ["quiero la espinaca", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Espinaca.",
+      "aristas": ["sub_hojas", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Espinaca", 1.10]
+    },
+    {
+      "id": "prod_papa",
+      "tipo": "producto",
+      "nombre": "Papa Blanca",
+      "sinonimos": ["papa", "patata", "pure"],
+      "pregunta": "¿Agregamos las Papas?",
+      "precio": "0.75",
+      "respuesta": "La libra de Papa cuesta $0.75.",
+      "aristas": ["comprar_papa", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_papa",
+      "nombre": "Agregar Papa Blanca al carrito",
+      "sinonimos": ["quiero las papas", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Papas.",
+      "aristas": ["sub_raiz", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Papa Blanca", 0.75]
+    },
+    {
+      "id": "prod_zanahoria",
+      "tipo": "producto",
+      "nombre": "Zanahoria",
+      "sinonimos": ["zanahoria", "naranja", "conejo"],
+      "pregunta": "¿Agregamos las Zanahorias?",
+      "precio": "0.85",
+      "respuesta": "La bolsa de Zanahorias cuesta $0.85.",
+      "aristas": ["comprar_zanahoria", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_zanahoria",
+      "nombre": "Agregar Zanahoria al carrito",
+      "sinonimos": ["quiero las zanahorias", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Zanahorias.",
+      "aristas": ["sub_raiz", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Zanahoria", 0.85]
+    },
+    {
+      "id": "cat_carnes",
+      "tipo": "categoria",
+      "nombre": "Carnes",
+      "sinonimos": ["carne", "roja", "pollo", "proteina"],
+      "pregunta": "¿Qué tipo de carne buscas?",
+      "respuesta": "Tenemos cortes de Res y Pollo fresco.",
+      "aristas": ["sub_res", "sub_pollo"]
+    },
+    {
+      "id": "sub_res",
+      "tipo": "subcategoria",
+      "nombre": "Res",
+      "sinonimos": ["res", "vaca", "roja", "bistec"],
+      "pregunta": "¿Buscas carne molida o para asar?",
+      "respuesta": "Tenemos Carne Molida Especial y Puyaso.",
+      "aristas": ["prod_molida", "prod_puyaso"]
+    },
+    {
+      "id": "sub_pollo",
+      "tipo": "subcategoria",
+      "nombre": "Pollo",
+      "sinonimos": ["pollo", "ave", "blanca"],
+      "pregunta": "¿Prefieres pechuga o muslos?",
+      "respuesta": "Tenemos Pechuga deshuesada y Muslos de pollo.",
+      "aristas": ["prod_pechuga", "prod_muslos"]
+    },
+    {
+      "id": "prod_molida",
+      "tipo": "producto",
+      "nombre": "Carne Molida",
+      "sinonimos": ["molida", "torta", "hamburguesa"],
+      "pregunta": "¿Agregamos la Carne Molida?",
+      "precio": "4.50",
+      "respuesta": "La libra de Carne Molida cuesta $4.50.",
+      "aristas": ["comprar_molida", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_molida",
+      "nombre": "Agregar Carne Molida al carrito",
+      "sinonimos": ["quiero la carne molida", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Carne Molida.",
+      "aristas": ["sub_res", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Carne Molida", 4.50]
+    },
+    {
+      "id": "prod_puyaso",
+      "tipo": "producto",
+      "nombre": "Puyaso",
+      "sinonimos": ["puyaso", "corte", "asado", "parrillada"],
+      "pregunta": "¿Agregamos el Puyaso?",
+      "precio": "6.50",
+      "respuesta": "La libra de Puyaso cuesta $6.50.",
+      "aristas": ["comprar_puyaso", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_puyaso",
+      "nombre": "Agregar Puyaso al carrito",
+      "sinonimos": ["quiero el puyaso", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Puyaso.",
+      "aristas": ["sub_res", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Puyaso", 6.50]
+    },
+    {
+      "id": "prod_pechuga",
+      "tipo": "producto",
+      "nombre": "Pechuga de Pollo",
+      "sinonimos": ["pechuga", "filete", "sin hueso"],
+      "pregunta": "¿Agregamos la Pechuga?",
+      "precio": "3.75",
+      "respuesta": "La libra de Pechuga cuesta $3.75.",
+      "aristas": ["comprar_pechuga", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_pechuga",
+      "nombre": "Agregar Pechuga de Pollo al carrito",
+      "sinonimos": ["quiero la pechuga", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Pechuga de Pollo.",
+      "aristas": ["sub_pollo", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Pechuga de Pollo", 3.75]
+    },
+    {
+      "id": "prod_muslos",
+      "tipo": "producto",
+      "nombre": "Muslos de Pollo",
+      "sinonimos": ["muslos", "pierna", "pollo"],
+      "pregunta": "¿Agregamos los Muslos?",
+      "precio": "2.25",
+      "respuesta": "La libra de Muslos cuesta $2.25.",
+      "aristas": ["comprar_muslos", "final_huerto_real"]
+    },
+    {
+      "id": "comprar_muslos",
+      "nombre": "Agregar Muslos de Pollo al carrito",
+      "sinonimos": ["quiero los muslos", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Muslos de Pollo.",
+      "aristas": ["sub_pollo", "pagar_carrito", "final_huerto_real"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Muslos de Pollo", 2.25]
+    },
+    {
+      "id": "final_huerto_real",
+      "tipo": "final",
+      "nombre": "Despedida",
+      "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+      "pregunta": "",
+      "respuesta": "¡Gracias por comprar en Huerto Real! Disfruta la frescura.",
+      "aristas": []
+    }
+  ]
+}

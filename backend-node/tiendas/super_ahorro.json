@@ -1,0 +1,361 @@
+{
+  "id": "super_ahorro",
+  "nombre": "Super Ahorro",
+  "nodos": [
+    {
+      "id": "root_super_ahorro",
+      "tipo": "raiz",
+      "nombre": "Inicio",
+      "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+      "pregunta": "¿Qué deseas buscar en Super Ahorro?",
+      "respuesta": "Bienvenido. En Super Ahorro tenemos bebidas, snacks y limpieza.",
+      "aristas": ["bebidas_super_ahorro", "snacks_super_ahorro", "limpieza_super_ahorro"]
+    },
+    {
+      "id": "bebidas_super_ahorro",
+      "tipo": "categoria",
+      "nombre": "Bebidas",
+      "sinonimos": ["bebidas", "sed", "tomar", "liquido", "refresco"],
+      "pregunta": "¿Qué tipo de bebida buscas?",
+      "respuesta": "Dentro de bebidas tenemos: Refrescos, Jugos y Agua.",
+      "aristas": ["sub_refrescos", "sub_jugos", "sub_agua"]
+    },
+    {
+      "id": "sub_refrescos",
+      "tipo": "subcategoria",
+      "nombre": "Refrescos",
+      "sinonimos": ["refrescos", "gaseosas", "sodas", "colas", "carbonatadas"],
+      "pregunta": "¿Qué marca de refresco prefieres?",
+      "respuesta": "Tenemos Coca-Cola y Fanta disponibles.",
+      "aristas": ["prod_coca", "prod_fanta"]
+    },
+    {
+      "id": "sub_jugos",
+      "tipo": "subcategoria",
+      "nombre": "Jugos",
+      "sinonimos": ["jugos", "naturales", "frutas", "nectar"],
+      "pregunta": "¿Qué sabor de jugo buscas?",
+      "respuesta": "Tenemos Jugo de Naranja y Manzana.",
+      "aristas": ["prod_jugo_naranja", "prod_jugo_manzana"]
+    },
+    {
+      "id": "sub_agua",
+      "tipo": "subcategoria",
+      "nombre": "Agua",
+      "sinonimos": ["agua", "botella", "azul", "pura", "cristal"],
+      "pregunta": "¿Qué presentación de agua necesitas?",
+      "respuesta": "Tenemos agua embotellada personal cristal y alpina.",
+      "aristas": ["prod_agua_botella"]
+    },
+    {
+      "id": "prod_coca",
+      "tipo": "producto",
+      "nombre": "Coca Cola",
+      "sinonimos": ["coca", "cola", "negra", "coca-cola"],
+      "pregunta": "¿Quieres agregar Coca-Cola al carrito?",
+      "precio": "2.50",
+      "respuesta": "La Coca-Cola de 2.5L cuesta $2.50. ¿Deseas algo más?",
+      "aristas": ["comprar_coca", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_coca",
+      "nombre": "Agregar Coca Cola al carrito",
+      "sinonimos": ["quiero la coca", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Coca Cola.",
+      "aristas": ["sub_refrescos", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Coca Cola", 2.50]
+    },
+    {
+      "id": "prod_fanta",
+      "tipo": "producto",
+      "nombre": "Fanta",
+      "sinonimos": ["fanta", "naranja", "uva"],
+      "pregunta": "¿Quieres agregar Fanta al carrito?",
+      "precio": "2.25",
+      "respuesta": "La Fanta de 2.5L cuesta $2.25. ¿Deseas algo más?",
+      "aristas": ["comprar_fanta", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_fanta",
+      "nombre": "Agregar Fanta al carrito",
+      "sinonimos": ["quiero la fanta", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Fanta.",
+      "aristas": ["sub_refrescos", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Fanta", 2.25]
+    },
+    {
+      "id": "prod_jugo_naranja",
+      "tipo": "producto",
+      "nombre": "Jugo Naranja",
+      "sinonimos": ["naranja", "citrico"],
+      "pregunta": "¿Agregamos el jugo de naranja?",
+      "precio": "1.00",
+      "respuesta": "El jugo de naranja natural cuesta $1.00.",
+      "aristas": ["comprar_jugo_naranja", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_jugo_naranja",
+      "nombre": "Agregar Jugo Naranja al carrito",
+      "sinonimos": ["quiero el jugo", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Jugo Naranja.",
+      "aristas": ["sub_jugos", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Jugo Naranja", 1.00]
+    },
+    {
+      "id": "prod_jugo_manzana",
+      "tipo": "producto",
+      "nombre": "Jugo de Manzana",
+      "sinonimos": ["manzana"],
+      "pregunta": "¿Agregamos el jugo?",
+      "precio": "1.00",
+      "respuesta": "El jugo de manzana natural cuesta $1.00.",
+      "aristas": ["comprar_jugo_manzana", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_jugo_manzana",
+      "nombre": "Agregar Jugo de Manzana al carrito",
+      "sinonimos": ["quiero el jugo", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Jugo de Manzana.",
+      "aristas": ["sub_jugos", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Jugo de Manzana", 1.00]
+    },
+    {
+      "id": "prod_agua_botella",
+      "tipo": "producto",
+      "nombre": "Agua Embotellada",
+      "sinonimos": ["cristal", "alpina", "botellita"],
+      "pregunta": "¿Agregamos el agua?",
+      "precio": "0.75",
+      "respuesta": "La botella de agua cuesta $0.75.",
+      "aristas": ["comprar_agua_botella", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_agua_botella",
+      "nombre": "Agregar Agua Embotellada al carrito",
+      "sinonimos": ["quiero el agua", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Agua Embotellada.",
+      "aristas": ["sub_agua", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Agua Embotellada", 0.75]
+    },
+    {
+      "id": "snacks_super_ahorro",
+      "tipo": "categoria",
+      "nombre": "Snacks",
+      "sinonimos": ["snacks", "papas", "churros", "boquitas", "antojo"],
+      "pregunta": "¿Qué tipo de snack se te antoja?",
+      "respuesta": "Tenemos snacks Salados y Dulces.",
+      "aristas": ["sub_snacks_salados", "sub_snacks_dulces"]
+    },
+    {
+      "id": "sub_snacks_salados",
+      "tipo": "subcategoria",
+      "nombre": "Salados",
+      "sinonimos": ["salado", "sal", "papas", "frituras", "picante"],
+      "pregunta": "¿Prefieres papas o nachos?",
+      "respuesta": "Tenemos Lays Clásicas y Doritos Queso.",
+      "aristas": ["prod_lays", "prod_doritos"]
+    },
+    {
+      "id": "sub_snacks_dulces",
+      "tipo": "subcategoria",
+      "nombre": "Dulces",
+      "sinonimos": ["dulce", "galletas", "chocolate", "azucar"],
+      "pregunta": "¿Qué galleta prefieres?",
+      "respuesta": "Tenemos Oreo y Chokis.",
+      "aristas": ["prod_oreo", "prod_chokis"]
+    },
+    {
+      "id": "prod_lays",
+      "tipo": "producto",
+      "nombre": "Papas Lays",
+      "sinonimos": ["lays", "naturales", "lisas"],
+      "pregunta": "¿Agregamos las Lays?",
+      "precio": "1.50",
+      "respuesta": "Las Lays cuestan $1.50.",
+      "aristas": ["comprar_lays", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_lays",
+      "nombre": "Agregar Papas Lays al carrito",
+      "sinonimos": ["quiero las lays", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Papas Lays.",
+      "aristas": ["sub_snacks_salados", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Papas Lays", 1.50]
+    },
+    {
+      "id": "prod_doritos",
+      "tipo": "producto",
+      "nombre": "Doritos",
+      "sinonimos": ["doritos", "nachos", "queso", "triangulos"],
+      "pregunta": "¿Agregamos los Doritos?",
+      "precio": "1.60",
+      "respuesta": "Los Doritos cuestan $1.60.",
+      "aristas": ["comprar_doritos", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_doritos",
+      "nombre": "Agregar Doritos al carrito",
+      "sinonimos": ["quiero los doritos", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Doritos.",
+      "aristas": ["sub_snacks_salados", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Doritos", 1.60]
+    },
+    {
+      "id": "prod_oreo",
+      "tipo": "producto",
+      "nombre": "Galletas Oreo",
+      "sinonimos": ["oreo", "crema", "sandwich"],
+      "pregunta": "¿Agregamos las Oreo?",
+      "precio": "1.00",
+      "respuesta": "El paquete de Oreo cuesta $1.00.",
+      "aristas": ["comprar_oreo", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_oreo",
+      "nombre": "Agregar Galletas Oreo al carrito",
+      "sinonimos": ["quiero las oreo", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Galletas Oreo.",
+      "aristas": ["sub_snacks_dulces", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Galletas Oreo", 1.00]
+    },
+    {
+      "id": "prod_chokis",
+      "tipo": "producto",
+      "nombre": "Galletas Chokis",
+      "sinonimos": ["chokis", "ispas", "chocochispas"],
+      "pregunta": "¿Agregamos las Chokis?",
+      "precio": "1.10",
+      "respuesta": "Las Chokis cuestan $1.10.",
+      "aristas": ["comprar_chokis", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_chokis",
+      "nombre": "Agregar Galletas Chokis al carrito",
+      "sinonimos": ["quiero las chokis", "comprar", "llevar", "agregalas", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Galletas Chokis.",
+      "aristas": ["sub_snacks_dulces", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Galletas Chokis", 1.10]
+    },
+    {
+      "id": "limpieza_super_ahorro",
+      "tipo": "categoria",
+      "nombre": "Limpieza",
+      "sinonimos": ["limpieza", "aseo", "higiene", "casa"],
+      "pregunta": "¿Qué necesitas limpiar?",
+      "respuesta": "Tenemos productos para Ropa y para el Hogar (Pisos/Baños).",
+      "aristas": ["sub_limpieza_ropa", "sub_limpieza_hogar"]
+    },
+    {
+      "id": "sub_limpieza_ropa",
+      "tipo": "subcategoria",
+      "nombre": "Ropa",
+      "sinonimos": ["ropa", "lavadora", "vestido", "prendas"],
+      "pregunta": "¿Buscas detergente o suavizante?",
+      "respuesta": "Tenemos Detergente en polvo y Suavizante líquido.",
+      "aristas": ["prod_detergente", "prod_suavizante"]
+    },
+    {
+      "id": "sub_limpieza_hogar",
+      "tipo": "subcategoria",
+      "nombre": "Hogar",
+      "sinonimos": ["hogar", "piso", "baño", "cocina", "superficies"],
+      "pregunta": "¿Buscas desinfectante o lejía?",
+      "respuesta": "Tenemos Desinfectante de lavanda y Lejía.",
+      "aristas": ["prod_desinfectante", "prod_lejia"]
+    },
+    {
+      "id": "prod_detergente",
+      "tipo": "producto",
+      "nombre": "Detergente Ariel",
+      "sinonimos": ["ariel", "jabon", "polvo", "bolsa", "detergente"],
+      "pregunta": "¿Agregamos el Detergente?",
+      "precio": "3.50",
+      "respuesta": "La bolsa de Ariel cuesta $3.50.",
+      "aristas": ["comprar_detergente", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_detergente",
+      "nombre": "Agregar Detergente Ariel al carrito",
+      "sinonimos": ["quiero el detergente", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Detergente Ariel.",
+      "aristas": ["sub_limpieza_ropa", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Detergente Ariel", 3.50]
+    },
+    {
+      "id": "prod_suavizante",
+      "tipo": "producto",
+      "nombre": "Suavizante Downy",
+      "sinonimos": ["downy", "suavitel", "suavizante", "liquido"],
+      "pregunta": "¿Agregamos el Suavizante?",
+      "precio": "2.75",
+      "respuesta": "El Downy cuesta $2.75.",
+      "aristas": ["comprar_suavizante", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_suavizante",
+      "nombre": "Agregar Suavizante Downy al carrito",
+      "sinonimos": ["quiero el suavizante", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Suavizante Downy.",
+      "aristas": ["sub_limpieza_ropa", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Suavizante Downy", 2.75]
+    },
+    {
+      "id": "prod_desinfectante",
+      "tipo": "producto",
+      "nombre": "Desinfectante Fabuloso",
+      "sinonimos": ["Fabuloso", "rinso", "aroma", "piso", "desinfectante"],
+      "pregunta": "¿Agregamos el Desinfectante?",
+      "precio": "1.25",
+      "respuesta": "El Fabuloso cuesta $1.25.",
+      "aristas": ["comprar_desinfectante", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_desinfectante",
+      "nombre": "Agregar Desinfectante Fabuloso al carrito",
+      "sinonimos": ["quiero el desinfectante", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Desinfectante Fabuloso.",
+      "aristas": ["sub_limpieza_hogar", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Desinfectante Fabuloso", 1.25]
+    },
+    {
+      "id": "prod_lejia",
+      "tipo": "producto",
+      "nombre": "Lejía Magia Blanca",
+      "sinonimos": ["lejia", "cloro", "blanqueador", "magia"],
+      "pregunta": "¿Agregamos la Lejía?",
+      "precio": "0.90",
+      "respuesta": "La botella de Lejía cuesta $0.90.",
+      "aristas": ["comprar_lejia", "final_super_ahorro"]
+    },
+    {
+      "id": "comprar_lejia",
+      "nombre": "Agregar Lejía Magia Blanca al carrito",
+      "sinonimos": ["quiero la lejia", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Lejía Magia Blanca.",
+      "aristas": ["sub_limpieza_hogar", "pagar_carrito", "final_super_ahorro"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Lejía Magia Blanca", 0.90]
+    },
+    {
+      "id": "final_super_ahorro",
+      "tipo": "final",
+      "nombre": "Despedida",
+      "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+      "pregunta": "",
+      "respuesta": "¡Gracias por comprar en Super Ahorro! Tu pedido ha sido procesado.",
+      "aristas": []
+    }
+  ]
+}

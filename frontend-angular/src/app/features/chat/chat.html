@@ -1,0 +1,205 @@
+<div class="bg-background-light font-body min-h-screen flex items-center justify-center p-4">
+  <div class="relative w-full max-w-[400px] h-[750px] bg-card-light rounded-3xl shadow-xl flex flex-col overflow-hidden">
+    
+    <div class="bg-gradient-to-r from-blue-600 to-blue-400 p-6 text-white flex justify-between items-start z-20">
+
+        <div class="rounded-full bg-white border-2 border-white w-15 h-15 flex items-center justify-center shadow-md overflow-hidden">
+          <img src="emma-avatar.png" alt="Emma Chatbot Avatar" class="h-14 w-auto"/>
+        </div>
+      <div>
+        <p class="text-xs opacity-90 tracking-wide uppercase">Chatbot</p>
+        <div class="flex items-baseline gap-2 mb-1">
+          <h2 class="text-2xl font-bold tracking-tight">Emma</h2>
+          <!-- Marca de agua en UI -->
+          <span class="text-[10px] bg-white/20 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/30 text-white/90 whitespace-nowrap">
+            by Rodrigo Ávila
+          </span>
+        </div>
+        
+        <select [(ngModel)]="vozSeleccionada" class="mt-1 text-xs bg-white/20 border border-white/30 rounded-lg p-1 text-white outline-none cursor-pointer focus:bg-blue-600">
+          @for (voz of vocesDisponibles; track voz.id) {
+            <option [value]="voz.id" class="text-gray-800">{{ voz.nombre }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="flex items-center space-x-2">
+        <button (click)="mostrarInfo = true" class="relative p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center" title="Información del Proyecto">
+          <span class="material-icons text-xl">info</span>
+        </button>
+
+        <button (click)="mostrarCarrito = !mostrarCarrito" class="relative p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors flex items-center justify-center">
+          <span class="text-xl">🛒</span>
+          @if (carritoItems.length > 0) {
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-md">
+              {{ carritoItems.length }}
+            </span>
+          }
+        </button>
+      </div>
+    </div>
+
+    @if (mostrarInfo) {
+      <div class="absolute inset-0 bg-black/60 z-50 flex items-center justify-center p-4 animate-fade-in backdrop-blur-sm">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-h-[85%] flex flex-col overflow-hidden">
+          <div class="bg-gray-50 px-4 py-3 border-b flex justify-between items-center">
+            <span class="font-bold text-gray-700">Sobre este Proyecto</span>
+            <button (click)="mostrarInfo = false" class="text-gray-400 hover:text-gray-600 text-xl font-bold">✖</button>
+          </div>
+          
+          <div class="flex-1 overflow-y-auto p-5 space-y-5 custom-scrollbar text-sm text-gray-700">
+            
+            <section>
+              <h3 class="font-bold text-primary text-base mb-2 flex items-center gap-2">
+                <span class="material-icons text-sm">help_outline</span> ¿Cómo usar Emma?
+              </h3>
+              <p class="mb-2">Emma te asistirá simulando el proceso de compra a través de 5 tiendas integradas. Puedes explorar categorías, consultar precios y armar tu carrito.</p>
+              <ul class="list-none space-y-2 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                <li>👉 <strong>"menú"</strong>: Repite las opciones de la tienda actual.</li>
+                <li>👉 <strong>"agregar al carrito"</strong>: Añade el producto que estás viendo.</li>
+                <li>👉 <strong>"salir"</strong>: Regresa al menú principal en cualquier momento.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h3 class="font-bold text-primary text-base mb-2 flex items-center gap-2">
+                <span class="material-icons text-sm">code</span> Stack Tecnológico
+              </h3>
+              <p class="mb-2">Desarrollado aplicando principios de <em>Clean Architecture</em>, asegurando la calidad técnica mediante un núcleo inmutable y funciones puras.</p>
+              
+              <div class="space-y-3">
+                <div>
+                  <span class="font-semibold text-gray-800 text-xs uppercase tracking-wider">Frontend</span>
+                  <p class="text-gray-600">Angular, TypeScript, Tailwind CSS. UI/UX interactiva con integración de reconocimiento de voz (Whisper API) y habla (Edge_tts).</p>
+                </div>
+                <div>
+                  <span class="font-semibold text-gray-800 text-xs uppercase tracking-wider">Backend & Algoritmos</span>
+                  <p class="text-gray-600">Motor de búsqueda semántica utilizando <strong>Distancia de Levenshtein</strong> y <strong>Similitud del Coseno</strong>. Navegación estructurada del catálogo implementada mediante algoritmos de grafos (<strong>BFS y DFS</strong>).</p>
+                </div>
+                <div>
+                  <span class="font-semibold text-gray-800 text-xs uppercase tracking-wider">Despliegue</span>
+                  <p class="text-gray-600">Vercel.</p>
+                </div>
+              </div>
+            </section>
+
+          </div>
+          
+          <div class="bg-gray-50 px-4 py-3 border-t">
+            <button (click)="mostrarInfo = false" class="w-full bg-primary text-white text-sm font-semibold py-2 rounded-xl hover:bg-blue-700 transition-colors">
+              ¡Entendido, a probar!
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (mostrarCarrito) {
+      <div class="absolute top-[90px] right-4 w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden flex flex-col max-h-[50%] animate-fade-in">
+        <div class="bg-gray-50 px-4 py-3 border-b flex justify-between items-center">
+          <span class="font-bold text-gray-700">Tu Orden</span>
+          <button (click)="mostrarCarrito = false" class="text-gray-400 hover:text-gray-600 text-sm">✖</button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+          @if (carritoItems.length === 0) {
+            <p class="text-sm text-center text-gray-500 italic">El carrito está vacío</p>
+          } @else {
+            @for (item of carritoItems; track $index) {
+              <div class="flex justify-between items-center text-sm border-b border-gray-50 pb-2">
+                <span class="text-gray-700 truncate mr-2">{{ item.producto }}</span>
+                <span class="font-semibold text-primary">${{ item.precio }}</span>
+              </div>
+            }
+          }
+        </div>
+
+        <div class="bg-gray-50 px-4 py-3 border-t">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-sm font-bold text-gray-600">Total:</span>
+            <span class="text-lg font-bold text-primary">${{ totalCarrito }}</span>
+          </div>
+          <button (click)="mostrarCarrito = false" class="w-full bg-primary text-white text-sm font-semibold py-2 rounded-xl hover:bg-blue-700 transition-colors">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    }
+
+    <div #chatContainer class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar relative z-10">
+      
+      @for (msg of mensajes; track msg) {
+        <div class="flex" [class.justify-end]="msg.esUsuario" [class.justify-start]="!msg.esUsuario">
+          <div class="px-5 py-3 rounded-2xl text-sm max-w-[85%] shadow-sm"
+               [class.bg-primary]="msg.esUsuario" [class.text-white]="msg.esUsuario"
+               [class.bg-bubble-bot]="!msg.esUsuario">
+            {{ msg.texto }}
+          </div>
+        </div>
+      }
+
+      @if (isThinking) {
+        <div class="flex justify-start animate-fade-in">
+          <div class="px-5 py-4 rounded-2xl shadow-sm bg-bubble-bot flex items-center gap-1.5 w-fit">
+            <div class="w-2 h-2 bg-gray-500/70 rounded-full animate-bounce" style="animation-delay: 0ms;"></div>
+            <div class="w-2 h-2 bg-gray-500/70 rounded-full animate-bounce" style="animation-delay: 150ms;"></div>
+            <div class="w-2 h-2 bg-gray-500/70 rounded-full animate-bounce" style="animation-delay: 300ms;"></div>
+          </div>
+        </div>
+      }
+      
+    </div>
+
+    <div class="p-4 border-t bg-white relative z-20 flex flex-col">
+      
+      <div class="h-5 flex items-center justify-center mb-1">
+        @if (isVoiceLoading) {
+          <span class="text-xs font-semibold text-blue-600 animate-pulse flex items-center gap-1">
+            <span>🔊</span> Generando audio de Emma...
+          </span>
+        } @else if (whisperStatus !== 'Micrófono listo' && whisperStatus !== 'Inactivo') {
+          <span class="text-xs font-medium transition-colors" 
+                [class.text-red-500]="isRecording" 
+                [class.text-blue-500]="isTranscribing" 
+                [class.text-gray-400]="!isRecording && !isTranscribing">
+            {{ whisperStatus }}
+          </span>
+        }
+      </div>
+
+      <div class="relative flex items-center w-full">
+        <input [(ngModel)]="userInput"
+               (keyup.enter)="enviarMensaje()"
+               class="w-full border-none focus:ring-0 text-sm bg-gray-50 rounded-full py-3 pl-5 pr-24 outline-none"
+               placeholder="Escribe o habla..." autocomplete="off"/>
+        
+        <div class="absolute right-2 flex items-center space-x-1">
+          
+          <button (click)="toggleGrabacion()"
+                  [disabled]="!whisperReady && !isTranscribing"
+                  class="w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-sm"
+                  [class.bg-red-500]="isRecording"
+                  [class.text-white]="isRecording"
+                  [class.animate-pulse]="isRecording"
+                  [class.bg-gray-200]="!isRecording && !isTranscribing"
+                  [class.text-gray-500]="!isRecording && !isTranscribing"
+                  [class.bg-blue-100]="isTranscribing"
+                  [class.text-blue-500]="isTranscribing"
+                  [class.opacity-50]="!whisperReady && !isTranscribing"
+                  title="Grabar mensaje de voz">
+            <span class="material-icons text-lg">
+              {{ isRecording ? 'stop' : (isTranscribing ? 'sync' : 'mic') }}
+            </span>
+          </button>
+
+          <button (click)="enviarMensaje()"
+                  class="w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center shadow-md hover:bg-blue-700 transition-colors"
+                  title="Enviar mensaje">
+            <span class="material-icons text-lg">send</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,333 @@
+{
+  "id": "gran_bazar",
+  "nombre": "Gran Bazar",
+  "nodos": [
+    {
+      "id": "root_gran_bazar",
+      "tipo": "raiz",
+      "nombre": "Inicio",
+      "sinonimos": ["inicio", "menu", "catalogo", "hola", "buenas", "buenos", "comenzar"],
+      "pregunta": "¿Qué deseas buscar en Gran Bazar?",
+      "respuesta": "Bienvenido a Gran Bazar. Tenemos Tecnología, Cocina e Higiene.",
+      "aristas": ["tecno_gran_bazar", "cocina_gran_bazar", "higiene_gran_bazar"]
+    },
+    {
+      "id": "tecno_gran_bazar",
+      "tipo": "categoria",
+      "nombre": "Tecnología",
+      "sinonimos": ["tecnologia", "electronica", "gadgets", "tech"],
+      "pregunta": "¿Qué tipo de tecnología buscas?",
+      "respuesta": "Tenemos Audio y Accesorios de Cómputo.",
+      "aristas": ["sub_audio", "sub_computo"]
+    },
+    {
+      "id": "sub_audio",
+      "tipo": "subcategoria",
+      "nombre": "Audio",
+      "sinonimos": ["audio", "sonido", "musica", "escuchar"],
+      "pregunta": "¿Buscas audífonos o bocinas?",
+      "respuesta": "Tenemos Audífonos Bluetooth y Bocinas Portátiles.",
+      "aristas": ["prod_audifonos", "prod_bocina"]
+    },
+    {
+      "id": "sub_computo",
+      "tipo": "subcategoria",
+      "nombre": "Cómputo",
+      "sinonimos": ["computo", "pc", "ordenador", "perifericos"],
+      "pregunta": "¿Qué accesorio necesitas?",
+      "respuesta": "Tenemos Mouse inalámbrico y Teclado mecánico.",
+      "aristas": ["prod_mouse", "prod_teclado"]
+    },
+    {
+      "id": "prod_audifonos",
+      "tipo": "producto",
+      "nombre": "Audífonos Bluetooth",
+      "sinonimos": ["audifonos", "cascos", "bluetooth", "inalambricos"],
+      "pregunta": "¿Agregamos los Audífonos?",
+      "precio": "25.00",
+      "respuesta": "Los Audífonos cuestan $25.00.",
+      "aristas": ["comprar_audifonos", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_audifonos",
+      "nombre": "Agregar Audífonos Bluetooth al carrito",
+      "sinonimos": ["quiero los audifonos", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tus Audífonos Bluetooth.",
+      "aristas": ["sub_audio", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Audífonos Bluetooth", 25.00]
+    },
+    {
+      "id": "prod_bocina",
+      "tipo": "producto",
+      "nombre": "Bocina Portátil",
+      "sinonimos": ["bocina", "parlante", "speaker"],
+      "pregunta": "¿Agregamos la Bocina?",
+      "precio": "15.00",
+      "respuesta": "La Bocina cuesta $15.00.",
+      "aristas": ["comprar_bocina", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_bocina",
+      "nombre": "Agregar Bocina Portátil al carrito",
+      "sinonimos": ["quiero la bocina", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Bocina Portátil.",
+      "aristas": ["sub_audio", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Bocina Portátil", 15.00]
+    },
+    {
+      "id": "prod_mouse",
+      "tipo": "producto",
+      "nombre": "Mouse Inalámbrico",
+      "sinonimos": ["mouse", "raton", "optico"],
+      "pregunta": "¿Agregamos el Mouse?",
+      "precio": "10.00",
+      "respuesta": "El Mouse cuesta $10.00.",
+      "aristas": ["comprar_mouse", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_mouse",
+      "nombre": "Agregar Mouse Inalámbrico al carrito",
+      "sinonimos": ["quiero el mouse", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Mouse Inalámbrico.",
+      "aristas": ["sub_computo", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Mouse Inalámbrico", 10.00]
+    },
+    {
+      "id": "prod_teclado",
+      "tipo": "producto",
+      "nombre": "Teclado Mecánico",
+      "sinonimos": ["teclado", "keys", "mecanico"],
+      "pregunta": "¿Agregamos el Teclado?",
+      "precio": "35.00",
+      "respuesta": "El Teclado cuesta $35.00.",
+      "aristas": ["comprar_teclado", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_teclado",
+      "nombre": "Agregar Teclado Mecánico al carrito",
+      "sinonimos": ["quiero el teclado", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Teclado Mecánico.",
+      "aristas": ["sub_computo", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Teclado Mecánico", 35.00]
+    },
+    {
+      "id": "cocina_gran_bazar",
+      "tipo": "categoria",
+      "nombre": "Cocina",
+      "sinonimos": ["cocina", "chef", "comida", "preparar"],
+      "pregunta": "¿Qué necesitas para tu cocina?",
+      "respuesta": "Tenemos Utensilios y Electrodomésticos.",
+      "aristas": ["sub_utensilios", "sub_electro"]
+    },
+    {
+      "id": "sub_utensilios",
+      "tipo": "subcategoria",
+      "nombre": "Utensilios",
+      "sinonimos": ["utensilios", "herramientas", "uso diario"],
+      "pregunta": "¿Buscas sartenes o cuchillos?",
+      "respuesta": "Tenemos Sartén antiadherente y Set de Cuchillos.",
+      "aristas": ["prod_sarten", "prod_cuchillos"]
+    },
+    {
+      "id": "sub_electro",
+      "tipo": "subcategoria",
+      "nombre": "Electrodomésticos",
+      "sinonimos": ["electro", "maquinas", "electricos", "Electrodomsticos", "Electrodomésticos"],
+      "pregunta": "¿Buscas licuadora o tostadora?",
+      "respuesta": "Tenemos Licuadora de 10 vel y Tostadora.",
+      "aristas": ["prod_licuadora", "prod_tostadora"]
+    },
+    {
+      "id": "prod_sarten",
+      "tipo": "producto",
+      "nombre": "Sartén Antiadherente",
+      "sinonimos": ["sarten", "teflon", "freir"],
+      "pregunta": "¿Agregamos el Sartén?",
+      "precio": "12.00",
+      "respuesta": "El Sartén cuesta $12.00.",
+      "aristas": ["comprar_sarten", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_sarten",
+      "nombre": "Agregar Sartén Antiadherente al carrito",
+      "sinonimos": ["quiero el sarten", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Sartén Antiadherente.",
+      "aristas": ["sub_utensilios", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Sartén Antiadherente", 12.00]
+    },
+    {
+      "id": "prod_cuchillos",
+      "tipo": "producto",
+      "nombre": "Set de Cuchillos",
+      "sinonimos": ["cuchillos", "cortar", "navajas"],
+      "pregunta": "¿Agregamos los Cuchillos?",
+      "precio": "18.00",
+      "respuesta": "El Set de Cuchillos cuesta $18.00.",
+      "aristas": ["comprar_cuchillos", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_cuchillos",
+      "nombre": "Agregar Set de Cuchillos al carrito",
+      "sinonimos": ["quiero los cuchillos", "comprar", "llevar", "agregalos", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Set de Cuchillos.",
+      "aristas": ["sub_utensilios", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Set de Cuchillos", 18.00]
+    },
+    {
+      "id": "prod_licuadora",
+      "tipo": "producto",
+      "nombre": "Licuadora",
+      "sinonimos": ["licuadora", "batidora", "mezcladora"],
+      "pregunta": "¿Agregamos la Licuadora?",
+      "precio": "30.00",
+      "respuesta": "La Licuadora cuesta $30.00.",
+      "aristas": ["comprar_licuadora", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_licuadora",
+      "nombre": "Agregar Licuadora al carrito",
+      "sinonimos": ["quiero la licuadora", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Licuadora.",
+      "aristas": ["sub_electro", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Licuadora", 30.00]
+    },
+    {
+      "id": "prod_tostadora",
+      "tipo": "producto",
+      "nombre": "Tostadora",
+      "sinonimos": ["tostadora", "pan", "tostar"],
+      "pregunta": "¿Agregamos la Tostadora?",
+      "precio": "20.00",
+      "respuesta": "La Tostadora cuesta $20.00.",
+      "aristas": ["comprar_tostadora", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_tostadora",
+      "nombre": "Agregar Tostadora al carrito",
+      "sinonimos": ["quiero la tostadora", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Tostadora.",
+      "aristas": ["sub_electro", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Tostadora", 20.00]
+    },
+    {
+      "id": "higiene_gran_bazar",
+      "tipo": "categoria",
+      "nombre": "Higiene",
+      "sinonimos": ["higiene", "personal", "baño", "cuidado"],
+      "pregunta": "¿Qué producto de higiene buscas?",
+      "respuesta": "Tenemos Cuidado Capilar y Cuidado Bucal.",
+      "aristas": ["sub_capilar", "sub_bucal"]
+    },
+    {
+      "id": "sub_capilar",
+      "tipo": "subcategoria",
+      "nombre": "Cuidado Capilar",
+      "sinonimos": ["pelo", "cabello", "cabeza", "capilar"],
+      "pregunta": "¿Buscas Shampoo o Acondicionador?",
+      "respuesta": "Tenemos Shampoo Anticaspa y Acondicionador.",
+      "aristas": ["prod_shampoo", "prod_acondicionador"]
+    },
+    {
+      "id": "sub_bucal",
+      "tipo": "subcategoria",
+      "nombre": "Cuidado Bucal",
+      "sinonimos": ["boca", "dientes", "dental"],
+      "pregunta": "¿Buscas pasta o cepillo?",
+      "respuesta": "Tenemos Pasta Dental y Cepillos de Bambú.",
+      "aristas": ["prod_pasta", "prod_cepillo"]
+    },
+    {
+      "id": "prod_shampoo",
+      "tipo": "producto",
+      "nombre": "Shampoo Anticaspa",
+      "sinonimos": ["shampoo", "champu", "jabon de pelo"],
+      "pregunta": "¿Agregamos el Shampoo?",
+      "precio": "4.50",
+      "respuesta": "El Shampoo cuesta $4.50.",
+      "aristas": ["comprar_shampoo", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_shampoo",
+      "nombre": "Agregar Shampoo Anticaspa al carrito",
+      "sinonimos": ["quiero el shampoo", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Shampoo Anticaspa.",
+      "aristas": ["sub_capilar", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Shampoo Anticaspa", 4.50]
+    },
+    {
+      "id": "prod_acondicionador",
+      "tipo": "producto",
+      "nombre": "Acondicionador",
+      "sinonimos": ["acondicionador", "suavidad", "crema"],
+      "pregunta": "¿Agregamos el Acondicionador?",
+      "precio": "4.00",
+      "respuesta": "El Acondicionador cuesta $4.00.",
+      "aristas": ["comprar_acondicionador", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_acondicionador",
+      "nombre": "Agregar Acondicionador al carrito",
+      "sinonimos": ["quiero el acondicionador", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Acondicionador.",
+      "aristas": ["sub_capilar", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Acondicionador", 4.00]
+    },
+    {
+      "id": "prod_pasta",
+      "tipo": "producto",
+      "nombre": "Pasta Dental",
+      "sinonimos": ["pasta", "dentifrico", "colgate"],
+      "pregunta": "¿Agregamos la Pasta?",
+      "precio": "1.75",
+      "respuesta": "La Pasta Dental cuesta $1.75.",
+      "aristas": ["comprar_pasta", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_pasta",
+      "nombre": "Agregar Pasta Dental al carrito",
+      "sinonimos": ["quiero la pasta", "comprar", "llevar", "agregala", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Pasta Dental.",
+      "aristas": ["sub_bucal", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Pasta Dental", 1.75]
+    },
+    {
+      "id": "prod_cepillo",
+      "tipo": "producto",
+      "nombre": "Cepillo de Bambú",
+      "sinonimos": ["cepillo", "dientes", "bambu"],
+      "pregunta": "¿Agregamos el Cepillo?",
+      "precio": "2.00",
+      "respuesta": "El Cepillo cuesta $2.00.",
+      "aristas": ["comprar_cepillo", "final_gran_bazar"]
+    },
+    {
+      "id": "comprar_cepillo",
+      "nombre": "Agregar Cepillo de Bambú al carrito",
+      "sinonimos": ["quiero el cepillo", "comprar", "llevar", "agregalo", "si"],
+      "respuesta": "¡Excelente elección! Preparando tu Cepillo de Bambú.",
+      "aristas": ["sub_bucal", "pagar_carrito", "final_gran_bazar"],
+      "accion": "agregarAlCarrito",
+      "parametros": ["Cepillo de Bambú", 2.00]
+    },
+    {
+      "id": "final_gran_bazar",
+      "tipo": "final",
+      "nombre": "Despedida",
+      "sinonimos": ["gracias", "adios", "bye", "salir", "terminar", "fin"],
+      "pregunta": "",
+      "respuesta": "¡Gracias por visitar Gran Bazar! Esperamos verte pronto.",
+      "aristas": []
+    }
+  ]
+}

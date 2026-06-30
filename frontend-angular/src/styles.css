@@ -1,0 +1,30 @@
+/* Importamos Tailwind y los plugins */
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+/* Aquí configuramos tus colores y fuentes (reemplaza al antiguo tailwind.config.js) */
+@theme {
+  --color-primary: #1a73e8;
+  --color-primary-dark: #1557b0;
+  --color-background-light: #f3f4f6;
+  --color-background-dark: #111827;
+  --color-card-light: #ffffff;
+  --color-card-dark: #1f2937;
+  --color-bubble-user: #1a73e8;
+  --color-bubble-bot: #f3f4f6;
+  --color-bubble-bot-dark: #374151;
+  --color-text-light: #1f2937;
+  --color-text-dark: #f9fafb;
+
+  --font-body: "Inter", sans-serif;
+}
+
+/* Tus estilos personalizados */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
